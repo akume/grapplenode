@@ -18,7 +18,7 @@ module.exports = {
   get_technique : function(req, res){
     Technique.find({},{},{}, function(err, techniques){
         if (techniques){
-          res.send(JSON.stringify(posts), 200);
+          res.send(JSON.stringify(techniques), 200);
         } else {
           res.send("no techniques found", 404);
         }

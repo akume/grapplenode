@@ -7,14 +7,14 @@ var Technique = new Schema({
   name        : String,
   url         : String,
   timeline    : Array,
-  options     : Array,
+  directions  : Array,
   counters    : Array,
   created_at  : {type : Date, default : Date.now},
   created_by  : ObjectId,
   meta        : {
         votes : Number
       , favs  : Number
-      , keys  : String
+      , keys  : Array
     }
 });
 

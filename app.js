@@ -2,7 +2,7 @@ require.paths.unshift(__dirname); //make local paths accessible
 /**
  * Module dependencies.
  */
-var express = require('express');
+var express 	= require('express');
 var mongoose    = require("mongoose");
 var controller  = require("./util/controller");
 
