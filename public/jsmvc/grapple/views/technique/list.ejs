@@ -1,0 +1,5 @@
+<%for(var i = 0; i < techniques.length ; i++){%>
+	<tr <%= techniques[i]%>>
+		<%= $.View('//grapple/views/technique/show',techniques[i])%>
+	</tr>
+<%}%>
