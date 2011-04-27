@@ -21,23 +21,20 @@ var db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
 * all the model imports and mongoose mappings and stuff
 *
 */
-//mongoose.model("User", require("./models/user").User);
+mongoose.model("User", require("./models/user").User);
 mongoose.model("Technique", require("./models/technique").Technique);
 
-
 // Configuration
-
+var pub = __dirname + '/public';
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({ secret: 'your secret here' }));
-  app.use(express.compiler({ src: __dirname + '/public', enable: ['sass'] }));
-  app.use(express.static(__dirname + '/public'));
-  
-  controller.bootControllers(app);
+  app.use(express.session({ secret: 'cum to me' }));
+  app.use(express.compiler({ src: pub, enable: ['sass'] }));
+  app.use(express.static(pub));
   
   console.log("grapplenode version " + app_version + " now running on port " + app_port);
 });
@@ -50,16 +47,41 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-// Routes
-
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Grappledge'
-  });
+app.dynamicHelpers({
+	session: function(req, res)
+	{
+		return req.session;
+	},
+	flash: function(req, res)
+	{
+		return req.flash();
+	}
 });
 
-// Only listen on $ node app.js
+// Routes
+var index_controller= require("./controllers/index_controller");
+var technique_controller= require("./controllers/technique_controller");
 
+function authUser(req, res, next)
+{
+	if (req.session.user)
+	{
+		next();
+	}
+	else
+	{
+		res.redirect('/sessions/new?redir=' + req.url)
+	}
+	
+};
+
+app.get('/', index_controller.get_index);
+app.get('/sessions/new', index_controller.sessions_new);
+app.post('/sessions', index_controller.sessions);
+app.get('/sessions/destroy', index_controller.sessions_destroy);
+app.get('/techniques', authUser, technique_controller.get_technique )
+
+// Only listen on $ node app.js
 if (!module.parent) {
   app.listen(app_port);
   console.log("Express server listening on port %d " + (new Date).toTimeString() , app.address().port);

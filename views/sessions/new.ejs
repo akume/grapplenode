@@ -1,0 +1,15 @@
+<h1>Login</h1>
+<form action='/sessions' method='post'>
+	<input type='hidden' name='redir' value='<%=redir%>'/>
+	<p>
+		<label for='login'>Login:</label>
+		<input id='login' name='login' type='text' />
+	</p>
+	<p>
+		<label for='password'>Password:</label>
+		<input id='password' name='password' type='password' />
+	</p>
+	<p>
+		<input id='submit' name='submit' type='submit' value='submit' />
+	</p>
+</form>

@@ -5,14 +5,6 @@ var fs          = require("fs");
 var Technique = mongoose.model("Technique");
 
 module.exports = {
-  mapping: {
-    'get_technique' :{
-      'url':'/techniques',
-      'method':'get',
-      'description':'get all techniques',
-      'auth':true
-    }
-  },
   
   // GET /techniques/:id
   get_technique : function(req, res){

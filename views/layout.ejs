@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>grapplenode</title>
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+  	<section>
+  	<% if (session.user){%>
+  		<div>logged in as <%=session.user.username%></div>
+  		<div><a href='/sessions/destroy'>logout</a></div>
+  	<%}%>
+  	<% if (flash.warn){%>
+  		<p><%=flash.warn%></p>
+  	<%}%>
     <%- body %>
+    </section>
   </body>
 </html>
