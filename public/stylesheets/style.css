@@ -1,9 +1,18 @@
 body {
   font: .9em "Lucida Grande", Helvetica, Arial, sans-serif;}
 
-section {
+nav, section {
   width: 920px;
-  margin: 0 auto;}
+  margin: 0 auto;
+  overflow: auto;}
+
+nav  ul {
+  margin: 10px 0 0 0;}
+nav  ul li {
+  float: right;
+  margin: 0 0 10px 10px;}
+nav  ul li.logo {
+  float: left;}
 
 h1 {
   font-size: 1.3em;}

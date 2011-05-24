@@ -6,15 +6,27 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  	<section>
-  	<% if (session.user){%>
-  		<div>logged in as <%=session.user.username%></div>
-  		<div><a href='/sessions/destroy'>logout</a></div>
-  	<%}%>
+  	<nav>
+  		<ul>
+  			<li class='logo'>Grapplenode</li>
+  			<% if (session.user){%>
+  				<li><a href='/auth/destroy'>logout</a></li>
+	  			<li><%=session.user.username%></li>
+  			<%} else {%>
+  				<li><a href='/auth/forgetpassword'>Forgot Password?</a></li>
+	  			<li><a href="/auth/facebook">Facebook</a> <a href="/auth/google">Google</a></li>
+  			<%} %>
+  			<li><input type='text' value="Search"/></li>
+  		</ul>
+    </nav>
+    
   	<% if (flash.warn){%>
   		<p><%=flash.warn%></p>
   	<%}%>
-    <%- body %>
-    </section>
+  	
+    <section>
+    	<%- body %>
+  	</section>
+  
   </body>
 </html>

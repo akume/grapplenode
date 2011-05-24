@@ -15,8 +15,26 @@ module.exports = {
       { url: '/' },
       { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' }},
       function(res){
-        assert.includes(res.body, '<title>Grappledge</title>');
+        assert.includes(res.body, '<li class=\'logo\'>Grapplenode</li>');
         assert.includes(res.body, '<iframe');
+      });
+  },
+  
+  '/auth/facebook':function(){
+  	assert.response(app,
+      { url: '/auth/facebook' },
+      { status: 302, headers: { 'Content-Type': 'text/html' }},
+      function(res){
+        assert.includes(res.body, 'Redirecting to ');
+      });
+  },
+  
+  '/auth/facebook/callback':function(){
+  	assert.response(app,
+      { url: '/auth/facebook' },
+      { status: 302, headers: { 'Content-Type': 'text/html' }},
+      function(res){
+        assert.includes(res.body, 'Redirecting to ');
       });
   }
 };
