@@ -16,7 +16,8 @@ var Technique = new Schema({
         votes : Number
       , favs  : Number
       , keys  : Array
-    }
+   },
+  icon		  : url{}
 });
 
 exports.Technique = Technique;

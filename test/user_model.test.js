@@ -9,10 +9,10 @@ require('console')
 	
 module.exports = {
 	'make sure user default properties': function(){
+		user = new User();
 		User.findOne({'email':'akume325@gmail.com'}, function(err, user){
 			user.should.have.property('email');
-			user.should.have.property('username');
-			user.should.have.property('password');	
+			user.should.have.property('role');
 		})
 	},
 	

@@ -2,19 +2,17 @@ require.paths.unshift(__dirname); //make local paths accessible
 /**
  * Module dependencies.
  */
-var express 	= require('express');
-var mongoose    = require("mongoose");
-var controller  = require("./util/controller");
+var express 	= require('express'),
+	mongoose    = require("mongoose"),
+	db_host     = "127.0.0.1",
+	db_name     = "grapplenode",
+	app_version = "0.0.1", 
+	app_port    = 3001,
 
+	app = module.exports = express.createServer(),
+	db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
 
-var db_host     = "127.0.0.1";
-var db_name     = "grapplenode";
-var app_version = "0.0.1";
-var app_port    = 3001;
-
-var app = module.exports = express.createServer();
-var db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
-
+	
 /*
 * models
 *
@@ -23,6 +21,7 @@ var db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
 */
 mongoose.model("User", require("./models/user").User);
 mongoose.model("Technique", require("./models/technique").Technique);
+
 
 // Configuration
 var pub = __dirname + '/public';
@@ -58,6 +57,7 @@ app.dynamicHelpers({
 	}
 });
 
+
 // Routes
 var index_controller= require("./controllers/index_controller");
 var technique_controller= require("./controllers/technique_controller");
@@ -70,16 +70,20 @@ function authUser(req, res, next)
 	}
 	else
 	{
-		res.redirect('/sessions/new?redir=' + req.url)
+		res.redirect('/auth/new?redir=' + req.url);
 	}
 	
 };
 
 app.get('/', index_controller.get_index);
-app.get('/sessions/new', index_controller.sessions_new);
-app.post('/sessions', index_controller.sessions);
-app.get('/sessions/destroy', index_controller.sessions_destroy);
-app.get('/techniques', authUser, technique_controller.get_technique )
+app.get('/auth/new', index_controller.sessions_new);
+app.post('/auth', index_controller.sessions);
+app.get('/auth/facebook', index_controller.facebook_auth);
+app.get('/auth/google', index_controller.google_auth);
+app.get('/auth/:provider/callback', index_controller.provider_auth_callback);
+app.get('/auth/destroy', index_controller.sessions_destroy);
+app.get('/techniques', authUser, technique_controller.get_technique );
+
 
 // Only listen on $ node app.js
 if (!module.parent) {
