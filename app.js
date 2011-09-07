@@ -2,17 +2,21 @@ require.paths.unshift(__dirname); //make local paths accessible
 /**
  * Module dependencies.
  */
+
 var express 	= require('express'),
 	mongoose    = require("mongoose"),
+	everyauth	= require('everyauth'),
 	db_host     = "127.0.0.1",
 	db_name     = "grapplenode",
 	app_version = "0.0.1", 
-	app_port    = 3001,
+	app_port    = 3001, 
 
 	app = module.exports = express.createServer(),
 	db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
-
 	
+
+
+
 /*
 * models
 *
@@ -22,21 +26,60 @@ var express 	= require('express'),
 mongoose.model("User", require("./models/user").User);
 mongoose.model("Technique", require("./models/technique").Technique);
 
+//Authentication
+var util = require('util'),
+	fs	 = require('fs'),
+	Promise = everyauth.Promise,
+	users 	= require('./lib/users'),
+	oauthSecrets = JSON.parse(fs.readFileSync('secrets.json', 'utf-8')),
+	User = mongoose.model("User");;
+
+everyauth.facebook
+	.appId(oauthSecrets.facebook.appId)
+	.appSecret(oauthSecrets.facebook.appSecret)
+	.scope('email')
+	.findOrCreateUser( function (session, accessToken, accessTokExtra, fbUserMetadata) {
+		console.log(fbUserMetadata);
+		var promise = new Promise();
+		users.findOrCreateByFacebookData(session, fbUserMetadata, promise);
+		return promise;
+	})
+	.redirectPath('/');
+
+everyauth.google
+  .appId(oauthSecrets.google.clientId)
+  .appSecret(oauthSecrets.google.clientSecret)
+  .scope('https://www.google.com/m8/feeds') // What you want access to
+  .findOrCreateUser( function (session, accessToken, accessTokenExtra, googleUserMetadata) {
+		console.log(googleUserMetadata);
+		var promise = new Promise();
+		users.findOrCreateByGoogleData(session, googleUserMetadata, promise);
+		return promise;
+  })
+  .redirectPath('/');
+
 
 // Configuration
 var pub = __dirname + '/public';
 app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'cum to me' }));
-  app.use(express.compiler({ src: pub, enable: ['sass'] }));
+  app.use(everyauth.middleware());
+  everyauth.everymodule.findUserById( function (userId, callback) {
+	  User.findById(userId, callback);
+	  // callback has the signature, function (err, user) {...}
+	});
+  app.use(app.router);
+  app.use(express.compiler({ src: pub, enable: ['sass'] })); 
   app.use(express.static(pub));
+  app.use(express.errorHandler());
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'ejs');
   
   console.log("grapplenode version " + app_version + " now running on port " + app_port);
-});
+}); 
 
 app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
@@ -59,9 +102,13 @@ app.dynamicHelpers({
 
 
 // Routes
+everyauth.helpExpress(app);
 var index_controller= require("./controllers/index_controller");
 var technique_controller= require("./controllers/technique_controller");
+var error_controller= require("./controllers/error_controller");
+var admin_controller= require("./controllers/admin_controller");
 
+/*
 function authUser(req, res, next)
 {
 	if (req.session.user)
@@ -75,14 +122,39 @@ function authUser(req, res, next)
 	
 };
 
-app.get('/', index_controller.get_index);
+function adminUser(req, res, next)
+{
+	if (req.session.user.role == "admin")
+	{
+		next();
+	}
+	else
+	{
+		res.redirect('/error/noaccess');
+	}
+	
+};
+
+
+
 app.get('/auth/new', index_controller.sessions_new);
 app.post('/auth', index_controller.sessions);
 app.get('/auth/facebook', index_controller.facebook_auth);
 app.get('/auth/google', index_controller.google_auth);
 app.get('/auth/:provider/callback', index_controller.provider_auth_callback);
 app.get('/auth/destroy', index_controller.sessions_destroy);
-app.get('/techniques', authUser, technique_controller.get_technique );
+*/
+
+app.get('/', index_controller.get_index);
+
+/*
+app.get('/techniques', authUser, technique_controller.get_technique);
+app.get('/techniques/:id', authUser, technique_controller.get_technique);
+
+app.get('/error/:message', error_controller.get_error);
+app.get('/admin/', authUser, adminUser, admin_controller.get_admin);
+*/
+
 
 
 // Only listen on $ node app.js

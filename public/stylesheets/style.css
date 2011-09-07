@@ -1,21 +1,61 @@
-body {
-  font: .9em "Lucida Grande", Helvetica, Arial, sans-serif;}
+@font-face {
+  font-family: 'Gabriola';
+  src: url('Gabriola.ttf');}
 
-nav, section {
-  width: 920px;
+@font-face {
+  font-family: 'Charlemagne';
+  src: url('CharlemagneStd-Bold.otf') ;}
+
+html, body {
+  font: .9em 'Gabriola', sans-serif;
+  background-color: #000;
+  color: #FFF;}
+
+header, nav, section {
+  width: 960px;
   margin: 0 auto;
   overflow: auto;}
 
-nav  ul {
+header ul {
   margin: 10px 0 0 0;}
-nav  ul li {
+header ul li {
   float: right;
-  margin: 0 0 10px 10px;}
-nav  ul li.logo {
-  float: left;}
+  margin: 0 0 10px 10px        ;}
+header ul li.logo {
+  float: left;
+  background-image: url('/images/grapplenode.jpg');
+  text-indent: -9000px;
+  height: 40px;
+  width: 193px;}
+
+nav  ul {
+  margin: 10px 0 ;
+  height: 3em;
+  width: 100%;
+  -moz-border-radius: 1em 4em 1em 4em;
+  -webkit-border-radius: 1em 4em 1em 4em;
+  border-radius: 1em 4em 1em 4em;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 2%, #541616 19%, #1c1c1c 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#ffffff), color-stop(19%,#541616), color-stop(100%,#1c1c1c));
+  background: -webkit-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);
+  background: -o-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);
+  background: -ms-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#1c1c1c',GradientType=0 );
+  background: linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);}
+nav  ul li {
+  float: left;
+  margin: 0 .5em;
+  font: 1.5em 'Charlemagne', sans-serif;
+  height: 100%;;
+  vertical-align: middle;;
+  line-height: 2.2em;}
 
 h1 {
   font-size: 1.3em;}
 
 a {
-  color: #00B7FF;}
+  color: #727272;
+  text-decoration: none;}
+a:hover  {
+  color: #fff;}
