@@ -6,18 +6,35 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  	<nav>
+  	<header>
   		<ul>
   			<li class='logo'>Grapplenode</li>
-  			<% if (session.user){%>
-  				<li><a href='/auth/destroy'>logout</a></li>
-	  			<li><%=session.user.username%></li>
+  			<li><a href=''>Help</a></li>
+  			<li><a href=''>Log In</a></li>
+  			<li><a href=''>What is GRAPPLENODE?</a></li>
+  			
+  			<% if (everyauth.loggedIn){%>
+  				<li><a href='/logout'>logout</a></li>
+	  			<li><%=everyauth.user.username%></li>
   			<%} else {%>
-  				<li><a href='/auth/forgetpassword'>Forgot Password?</a></li>
-	  			<li><a href="/auth/facebook">Facebook</a> <a href="/auth/google">Google</a></li>
+  				
   			<%} %>
-  			<li><input type='text' value="Search"/></li>
+  			
+  			
+			<!--li><a href='/auth/forgetpassword'>Forgot Password?</a></li>
+  			<li><a href="/auth/facebook">Facebook</a> <a href="/auth/google">Google</a></li>
+  			<li><input type='text' value="Search"/></li-->
   		</ul>
+    </header>
+    
+    <nav>
+    	<ul>
+    		<li><a href=''>Home</a></li>
+    		<li><a href=''>Techniques</a></li>
+    		<li><a href=''>Private Instruction</a></li>
+    		<li><a href=''>Matches</a></li>
+    		<li><a href=''></a></li>
+    	</ul>    	
     </nav>
     
   	<% if (flash.warn){%>
@@ -27,6 +44,6 @@
     <section>
     	<%- body %>
   	</section>
-  
+  	
   </body>
 </html>
