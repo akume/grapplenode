@@ -108,43 +108,6 @@ var technique_controller= require("./controllers/technique_controller");
 var error_controller= require("./controllers/error_controller");
 var admin_controller= require("./controllers/admin_controller");
 
-/*
-function authUser(req, res, next)
-{
-	if (req.session.user)
-	{
-		next();
-	}
-	else
-	{
-		res.redirect('/auth/new?redir=' + req.url);
-	}
-	
-};
-
-function adminUser(req, res, next)
-{
-	if (req.session.user.role == "admin")
-	{
-		next();
-	}
-	else
-	{
-		res.redirect('/error/noaccess');
-	}
-	
-};
-
-
-
-app.get('/auth/new', index_controller.sessions_new);
-app.post('/auth', index_controller.sessions);
-app.get('/auth/facebook', index_controller.facebook_auth);
-app.get('/auth/google', index_controller.google_auth);
-app.get('/auth/:provider/callback', index_controller.provider_auth_callback);
-app.get('/auth/destroy', index_controller.sessions_destroy);
-*/
-
 app.get('/', index_controller.get_index);
 
 /*

@@ -16,22 +16,108 @@ header, nav, section {
   margin: 0 auto;
   overflow: auto;}
 
-header ul {
-  margin: 10px 0 0 0;}
-header ul li {
-  float: right;
-  margin: 0 0 10px 10px        ;}
-header ul li.logo {
+header {
+  overflow: visible;}
+header ul#headerlinks {
+  width: 550px;}
+header ul#headerlinks li {
+  float: left;
+  margin: 0 .5em;
+  font: 1.1em 'Charlemagne', sans-serif;
+  height: 100%;;
+  vertical-align: middle;;
+  line-height: 3em;}
+header ul#headerlinks li.logo {
   float: left;
   background-image: url('/images/grapplenode.jpg');
   text-indent: -9000px;
   height: 40px;
-  width: 193px;}
+  width: 193px;
+  padding: 0;}
+header ul#auth {
+  margin: 10px 0 0 0;
+  height: 50px;
+  float: right;}
+header ul#auth li {
+  float: right;
+  margin: 0 5px 10px;
+  padding: 0 5px;
+  background-color: #272727;
+  position: relative;}
+header ul#auth li a div#facebook_icon {
+  background-image: url('/images/login_icon.png');
+  background-position: -29px 62px;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+  vertical-align: middle;}
+header ul#auth li a div#google_icon {
+  background-image: url('/images/login_icon.png');
+  background-position: -77px 62px;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+  vertical-align: middle;}
+header ul#auth li a:hover div#facebook_icon {
+  background-position: -29px 40px;}
+header ul#auth li a:hover div#google_icon {
+  background-position: -77px 40px;}
+header ul#auth li ul#auth-types {
+  margin: 0;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 22px;
+  background-color: #fff;
+  color: #272727;
+  width: 265px;
+  padding: 5px 0;}
+header ul#auth li ul#auth-types li {
+  float: left;
+  margin: 0;
+  background-color: #fff;
+  color: #272727;}
+header ul#auth li ul#auth-types li button {
+  cursor: pointer;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;}
+header ul#auth li ul#auth-types li button div {
+  height: 25px;
+  padding: 0 10px 0 0;
+  text-align: left;}
+header ul#auth li ul#auth-types li button div span {
+  height: 25px;
+  padding: 0 0 0 34px;
+  display: block;
+  line-height: 25px;
+  color: #fff;}
+header ul#auth li ul#auth-types li button#facebook_login div {
+  background: url('/images/login_btn.png') no-repeat scroll right -75px transparent;}
+header ul#auth li ul#auth-types li button#facebook_login div span {
+  background: url('/images/login_btn.png') no-repeat scroll 0 -75px transparent;}
+header ul#auth li ul#auth-types li button#google_login div {
+  background: url('/images/login_btn.png') no-repeat scroll right 0 transparent;}
+header ul#auth li ul#auth-types li button#google_login div span {
+  background: url('/images/login_btn.png') no-repeat scroll 0 0 transparent;
+  color: #272727;}
+header ul#auth li.active {
+  background-color: #fff;
+  color: #272727;}
+header ul#auth li.active a {
+  color: #272727;}
+header ul#auth li.active a div#facebook_icon {
+  background-position: -29px 84px;}
+header ul#auth li.active a div#google_icon {
+  background-position: -77px 84px;}
+header ul#auth li.active ul#auth-types {
+  display: block;}
 
-nav  ul {
+nav ul   {
   margin: 10px 0 ;
   height: 3em;
-  width: 100%;
   -moz-border-radius: 1em 4em 1em 4em;
   -webkit-border-radius: 1em 4em 1em 4em;
   border-radius: 1em 4em 1em 4em;
@@ -43,19 +129,15 @@ nav  ul {
   background: -ms-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#1c1c1c',GradientType=0 );
   background: linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);}
-nav  ul li {
-  float: left;
-  margin: 0 .5em;
-  font: 1.5em 'Charlemagne', sans-serif;
-  height: 100%;;
-  vertical-align: middle;;
-  line-height: 2.2em;}
+nav ul   li {
+  float: left;}
 
 h1 {
   font-size: 1.3em;}
 
 a {
   color: #727272;
-  text-decoration: none;}
+  text-decoration: none;
+  cursor: pointer;}
 a:hover  {
   color: #fff;}

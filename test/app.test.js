@@ -23,18 +23,12 @@ module.exports = {
   '/auth/facebook':function(){
   	assert.response(app,
       { url: '/auth/facebook' },
-      { status: 302, headers: { 'Content-Type': 'text/html' }},
-      function(res){
-        assert.includes(res.body, 'Redirecting to ');
-      });
+      { status: 303});
   },
   
   '/auth/facebook/callback':function(){
   	assert.response(app,
       { url: '/auth/facebook' },
-      { status: 302, headers: { 'Content-Type': 'text/html' }},
-      function(res){
-        assert.includes(res.body, 'Redirecting to ');
-      });
+      { status: 303});
   }
 };

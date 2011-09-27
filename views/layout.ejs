@@ -7,35 +7,44 @@
   </head>
   <body>
   	<header>
-  		<ul>
-  			<li class='logo'>Grapplenode</li>
-  			<li><a href=''>Help</a></li>
-  			<li><a href=''>Log In</a></li>
-  			<li><a href=''>What is GRAPPLENODE?</a></li>
-  			
+    	<ul id="auth">
   			<% if (everyauth.loggedIn){%>
   				<li><a href='/logout'>logout</a></li>
-	  			<li><%=everyauth.user.username%></li>
+	  			<li id="user"><%=everyauth.user.username%></li>
   			<%} else {%>
-  				
+  				<li id='auth-links'>
+  					<a id="login">Log In <div id="facebook_icon"></div> <div id="google_icon"></div></a>
+  					<ul id="auth-types">
+			  			<li>Login with:</li>
+			  			<li><button id="facebook_login" href='/auth/facebook' ><div><span>Facebook</span></div></button></li>
+			  			<li><button id="google_login" href='/auth/google' ><div><span>Google</span></div></button></li>
+			  		</ul>
+  				</li>
+  				<li><a>Become a member</a></li>
   			<%} %>
-  			
-  			
-			<!--li><a href='/auth/forgetpassword'>Forgot Password?</a></li>
-  			<li><a href="/auth/facebook">Facebook</a> <a href="/auth/google">Google</a></li>
-  			<li><input type='text' value="Search"/></li-->
+			<!--<li><input type='text' value="Search"/></li-->
   		</ul>
+    	<ul id="headerlinks">
+			<li class='logo'>Grapplenode</li>
+    		<li><a href='#'>Techniques</a></li>
+    		<li><a href='#'>Matches</a></li>
+    		<li><a href='#'>Instruction</a></li>
+    	</ul>
+  		
+  		
     </header>
-    
     <nav>
     	<ul>
-    		<li><a href=''>Home</a></li>
-    		<li><a href=''>Techniques</a></li>
-    		<li><a href=''>Private Instruction</a></li>
-    		<li><a href=''>Matches</a></li>
-    		<li><a href=''></a></li>
-    	</ul>    	
+    		<li><a>Browse</a></li>
+    		<li><a>Most Popular</a></li>
+    		<li><a>Recently Added</a></li>
+    		<li><a>Recommendations</a></li>
+    		<li><a>Favorites</a></li>
+    		<li><input type="text"> Search</li>
+    		
+    	</ul>
     </nav>
+    
     
   	<% if (flash.warn){%>
   		<p><%=flash.warn%></p>
@@ -44,6 +53,6 @@
     <section>
     	<%- body %>
   	</section>
-  	
+  	<script type='text/javascript' src='/jsmvc/steal/steal.js?grapple,development'></script>
   </body>
 </html>
