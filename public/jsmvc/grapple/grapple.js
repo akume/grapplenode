@@ -7,7 +7,7 @@ steal.plugins(
 	'jquery/dom/fixture',			// simulated Ajax requests
 	'jquery/dom/form_params')		// form data helper
 	
-	.css('grapple')	// loads styles
+	.css()	// loads styles
 
 	.resources()					// 3rd party script's (like jQueryUI), in resources folder
 
@@ -15,4 +15,15 @@ steal.plugins(
 
 	.controllers('technique')					// loads files in controllers folder
 
-	.views();						// adds views to be added to build
+	.views()						// adds views to be added to build
+	
+	.then(function()
+	{
+		$('#login').click(function(){
+			$(this).parent().addClass('active')
+		})
+		
+		$('#auth-types').mouseleave(function(){
+			$('#auth-links').removeClass('active')
+		})
+	})
