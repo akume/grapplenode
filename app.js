@@ -1,4 +1,3 @@
-require.paths.unshift(__dirname); //make local paths accessible
 /**
  * Module dependencies.
  */
@@ -129,7 +128,7 @@ if (!module.parent) {
 // exit if any js file or template file is changed.
 // it is ok because this script encapsualated in a batch while(true);
 // so it runs again after it exits.
-var autoexit_watch=require('lib/autorestart');
+var autoexit_watch=require('./lib/autorestart');
 
 var on_autoexit=function (filename) {console.log("bye bye"); } // if it returns false it means to ignore exit this time;  
 autoexit_watch(__dirname,".js", on_autoexit);

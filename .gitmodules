@@ -1,12 +1,1 @@
-[submodule "public/jsmvc/steal"]
-	path = public/jsmvc/steal
-	url = git@github.com:akume/steal.git
-[submodule "public/jsmvc/jquery"]
-	path = public/jsmvc/jquery
-	url = git@github.com:akume/jquerymx.git
-[submodule "public/jsmvc/documentjs"]
-	path = public/jsmvc/documentjs
-	url = git@github.com:akume/documentjs.git
-[submodule "public/jsmvc/funcunit"]
-	path = public/jsmvc/funcunit
-	url = git@github.com:akume/funcunit.git
+
