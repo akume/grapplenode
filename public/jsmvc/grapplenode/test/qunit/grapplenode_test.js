@@ -1,7 +1,7 @@
 steal("funcunit/qunit", function(){
-	module("admin");
+	module("grapplenode");
 	
-	test("admin testing works", function(){
+	test("grapplenode testing works", function(){
 		ok(true,"an assert is run");
 	});
 })

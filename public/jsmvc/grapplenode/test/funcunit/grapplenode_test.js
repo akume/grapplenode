@@ -1,7 +1,7 @@
 steal("funcunit", function(){
-	module("admin test", { 
+	module("grapplenode test", { 
 		setup: function(){
-			S.open("//admin/admin.html");
+			S.open("//grapplenode/grapplenode.html");
 		}
 	});
 	

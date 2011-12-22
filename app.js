@@ -8,7 +8,7 @@ var express 	= require('express'),
 	db_host     = "127.0.0.1",
 	db_name     = "grapplenode",
 	app_version = "0.0.1", 
-	app_port    = 3001, 
+	app_port    = 3001,
 
 	app = module.exports = express.createServer(),
 	db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
@@ -73,7 +73,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.compiler({ src: pub, enable: ['sass'] })); 
   app.use(express.static(pub));
-  app.use(express.errorHandler());
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   
@@ -122,7 +122,7 @@ app.get('/admin/', authUser, adminUser, admin_controller.get_admin);
 // Only listen on $ node app.js
 if (!module.parent) {
   app.listen(app_port);
-  console.log("Express server listening on port %d " + (new Date).toTimeString() , app.address().port);
+  console.log("Express server listening on port %d " + (new Date).toTimeString() , app_port);
 }
 
 // exit if any js file or template file is changed.

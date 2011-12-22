@@ -1,3 +1,2 @@
-steal
- .plugins("funcunit")
- .then("admin_test");
+steal("funcunit")
+ .then("./admin_test.js");
