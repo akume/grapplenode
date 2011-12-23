@@ -11,3 +11,6 @@
 [submodule "public/jsmvc/funcunit"]
 	path = public/jsmvc/funcunit
 	url = git@github.com:akume/funcunit.git
+[submodule "public/jsmvc/mxui"]
+	path = public/jsmvc/mxui
+	url = git@github.com:akume/mxui.git

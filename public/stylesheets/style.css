@@ -1,3 +1,57 @@
+
+
+html {
+  color: #000;
+  background: #FFF;}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;}
+
+fieldset, img {
+  border: 0;}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;}
+
+ol, ul {
+  list-style: none;}
+
+caption, th {
+  text-align: left;}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;}
+
+
+abbr, acronym {
+  border: 0;
+  font-variant: normal;}
+
+sup {
+  vertical-align: text-top;}
+
+sub {
+  vertical-align: text-bottom;}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;}
+
+
+legend {
+  color: #000;}
+
+
+
+
 @font-face {
   font-family: 'Gabriola';
   src: url('Gabriola.ttf');}
@@ -7,137 +61,161 @@
   src: url('CharlemagneStd-Bold.otf') ;}
 
 html, body {
-  font: .9em 'Gabriola', sans-serif;
+  font: .8em Lucida Sans,Lucida Grande,Arial,sans-serif;;
   background-color: #000;
   color: #FFF;}
 
-header, nav, section {
+nav, section {
   width: 960px;
   margin: 0 auto;
   overflow: auto;}
 
-header {
-  overflow: visible;}
-header ul#headerlinks {
-  width: 550px;}
-header ul#headerlinks li {
-  float: left;
-  margin: 0 .5em;
-  font: 1.1em 'Charlemagne', sans-serif;
-  height: 100%;;
-  vertical-align: middle;;
-  line-height: 3em;}
-header ul#headerlinks li.logo {
-  float: left;
-  background-image: url('/images/grapplenode.jpg');
-  text-indent: -9000px;
-  height: 40px;
-  width: 193px;
-  padding: 0;}
-header ul#auth {
-  margin: 10px 0 0 0;
+a {
+  color: #727272;
+  text-decoration: none;
+  cursor: pointer;}
+a:hover {
+  color: #fff;}
+
+nav {
   height: 50px;
-  float: right;}
-header ul#auth li {
+  overflow: visible;}
+nav >ul >li {
+  float: left;
+  margin: 0 .5em 0 0;
+  font: 1.8em 'Charlemagne', sans-serif;}
+nav >ul#auth {
   float: right;
-  margin: 0 5px 10px;
-  padding: 0 5px;
-  background-color: #272727;
-  position: relative;}
-header ul#auth li a div#facebook_icon {
+  height: 50px;}
+nav >ul#auth li#auth-links {
+  width: 85px;}
+nav >ul#auth a span#facebook_icon {
   background-image: url('/images/login_icon.png');
   background-position: -29px 62px;
   height: 14px;
   width: 14px;
   display: inline-block;
   vertical-align: middle;}
-header ul#auth li a div#google_icon {
+nav >ul#auth a span#google_icon {
   background-image: url('/images/login_icon.png');
   background-position: -77px 62px;
   height: 14px;
   width: 14px;
   display: inline-block;
   vertical-align: middle;}
-header ul#auth li a:hover div#facebook_icon {
+nav >ul#auth a:hover span#facebook_icon {
   background-position: -29px 40px;}
-header ul#auth li a:hover div#google_icon {
+nav >ul#auth a:hover span#google_icon {
   background-position: -77px 40px;}
-header ul#auth li ul#auth-types {
-  margin: 0;
+nav >ul#auth ul#auth-types {
+  font-size: .6em;
   display: none;
-  position: absolute;
-  right: 0;
-  top: 22px;
   background-color: #fff;
   color: #272727;
   width: 265px;
+  height: 30px;
   padding: 5px 0;}
-header ul#auth li ul#auth-types li {
+nav >ul#auth ul#auth-types li {
   float: left;
   margin: 0;
   background-color: #fff;
   color: #272727;}
-header ul#auth li ul#auth-types li button {
+nav >ul#auth ul#auth-types li a {
   cursor: pointer;
   margin: 0;
   overflow: visible;
   padding: 0;
   background: none repeat scroll 0 0 transparent;
   border: medium none;}
-header ul#auth li ul#auth-types li button div {
+nav >ul#auth ul#auth-types li a div {
   height: 25px;
   padding: 0 10px 0 0;
   text-align: left;}
-header ul#auth li ul#auth-types li button div span {
+nav >ul#auth ul#auth-types li a div span {
   height: 25px;
   padding: 0 0 0 34px;
   display: block;
   line-height: 25px;
   color: #fff;}
-header ul#auth li ul#auth-types li button#facebook_login div {
+nav >ul#auth ul#auth-types li a#facebook_login div {
   background: url('/images/login_btn.png') no-repeat scroll right -75px transparent;}
-header ul#auth li ul#auth-types li button#facebook_login div span {
+nav >ul#auth ul#auth-types li a#facebook_login div span {
   background: url('/images/login_btn.png') no-repeat scroll 0 -75px transparent;}
-header ul#auth li ul#auth-types li button#google_login div {
+nav >ul#auth ul#auth-types li a#google_login div {
   background: url('/images/login_btn.png') no-repeat scroll right 0 transparent;}
-header ul#auth li ul#auth-types li button#google_login div span {
+nav >ul#auth ul#auth-types li a#google_login div span {
   background: url('/images/login_btn.png') no-repeat scroll 0 0 transparent;
   color: #272727;}
-header ul#auth li.active {
-  background-color: #fff;
-  color: #272727;}
-header ul#auth li.active a {
-  color: #272727;}
-header ul#auth li.active a div#facebook_icon {
-  background-position: -29px 84px;}
-header ul#auth li.active a div#google_icon {
-  background-position: -77px 84px;}
-header ul#auth li.active ul#auth-types {
+
+section {
+  min-height: 200px;;}
+section .tab {
+  display: none;}
+section .tab.activetab {
   display: block;}
 
-nav ul   {
-  margin: 10px 0 ;
-  height: 3em;
-  -moz-border-radius: 1em 4em 1em 4em;
-  -webkit-border-radius: 1em 4em 1em 4em;
-  border-radius: 1em 4em 1em 4em;
-  background: #ffffff;
-  background: -moz-linear-gradient(top, #ffffff 2%, #541616 19%, #1c1c1c 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#ffffff), color-stop(19%,#541616), color-stop(100%,#1c1c1c));
-  background: -webkit-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);
-  background: -o-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);
-  background: -ms-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#1c1c1c',GradientType=0 );
-  background: linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%);}
-nav ul   li {
-  float: left;}
 
-h1 {
-  font-size: 1.3em;}
 
-a {
-  color: #727272;
-  text-decoration: none;
-  cursor: pointer;}
-a:hover  {
-  color: #fff;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

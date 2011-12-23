@@ -7,12 +7,12 @@ var express 	= require('express'),
 	everyauth	= require('everyauth'),
 	db_host     = "127.0.0.1",
 	db_name     = "grapplenode",
-	app_version = "0.0.1", 
+	app_version = "0.0.1",
 	app_port    = 3001,
 
 	app = module.exports = express.createServer(),
 	db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
-	
+
 
 
 
@@ -61,8 +61,10 @@ everyauth.google
 // Configuration
 var pub = __dirname + '/public';
 app.configure(function(){
-  app.use(express.bodyParser());
+  //app.use(express.logger());
   app.use(express.methodOverride());
+  app.use(express.bodyParser());
+
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'cum to me' }));
   app.use(everyauth.middleware());
@@ -70,21 +72,24 @@ app.configure(function(){
 	  User.findById(userId, callback);
 	  // callback has the signature, function (err, user) {...}
 	});
+
   app.use(app.router);
   app.use(express.compiler({ src: pub, enable: ['sass'] })); 
-  app.use(express.static(pub));
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  
+
   console.log("grapplenode version " + app_version + " now running on port " + app_port);
 }); 
 
 app.configure('development', function(){
+  app.use(express.static(pub));
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
 app.configure('production', function(){
+  var oneYear = 31557600000;
+  app.use(express.static(pub, {maxAge:oneYear}));
   app.use(express.errorHandler()); 
 });
 

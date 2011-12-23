@@ -1,0 +1,32 @@
+<ul id="auth">
+  <% if (username){%>
+    <li id="user"><%=username%></li>
+    <li><a href='/logout'>logout</a></li>
+  <%} else {%>
+    <li id='auth-links'>
+      <a>Login &gt; </a>
+      <ul id="auth-types">
+        <li>Login ></li>
+        <li><a id="facebook_login" href='/auth/facebook' ><div><span>Facebook</span></div></a></li>
+        <li><a id="google_login" href='/auth/google' ><div><span>Google</span></div></a></li>
+      </ul>
+    </li>
+    <li><a>Become a member</a></li>
+  <%}%>
+</ul>
+<ul id="headerlinks">
+<li class='logo'><a href='javascript:' class='tab' alt="home">Grapplenode</a></li>
+  <li><a href='javascript:' class='tab' alt="techniques">Techniques</a></li>
+  <!--li><a href='#'>Matches</a></li>
+  <li><a href='#'>Instruction</a></li-->
+</ul>
+
+<!--ul>
+	<li><a>Browse</a></li>
+	<li><a>Most Popular</a></li>
+	<li><a>Recently Added</a></li>
+	<li><a>Recommendations</a></li>
+	<li><a>Favorites</a></li>
+	<li><input type="text"> Search</li>
+
+</ul-->

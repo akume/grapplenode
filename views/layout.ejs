@@ -5,53 +5,21 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  	<header>
-    	<ul id="auth">
-  			<% if (everyauth.loggedIn){%>
-  				<li><a href='/logout'>logout</a></li>
-	  			<li id="user"><%=everyauth.user.username%></li>
-  			<%} else {%>
-  				<li id='auth-links'>
-  					<a id="login">Log In <div id="facebook_icon"></div> <div id="google_icon"></div></a>
-  					<ul id="auth-types">
-			  			<li>Login with:</li>
-			  			<li><button id="facebook_login" href='/auth/facebook' ><div><span>Facebook</span></div></button></li>
-			  			<li><button id="google_login" href='/auth/google' ><div><span>Google</span></div></button></li>
-			  		</ul>
-  				</li>
-  				<li><a>Become a member</a></li>
-  			<%} %>
-			<!--<li><input type='text' value="Search"/></li-->
-  		</ul>
-    	<ul id="headerlinks">
-			<li class='logo'>Grapplenode</li>
-    		<li><a href='#'>Techniques</a></li>
-    		<li><a href='#'>Matches</a></li>
-    		<li><a href='#'>Instruction</a></li>
-    	</ul>
-  		
-  		
-    </header>
-    <nav>
-    	<ul>
-    		<li><a>Browse</a></li>
-    		<li><a>Most Popular</a></li>
-    		<li><a>Recently Added</a></li>
-    		<li><a>Recommendations</a></li>
-    		<li><a>Favorites</a></li>
-    		<li><input type="text"> Search</li>
-    		
-    	</ul>
-    </nav>
-    
-    
-  	<% if (flash.warn){%>
-  		<p><%=flash.warn%></p>
-  	<%}%>
-  	
+    <nav></nav>
     <section>
-    	<%- body %>
-  	</section>
-  	<script type='text/javascript' src='/jsmvc/steal/steal.js?grapple,development'></script>
+      <div id="home" class="tab activetab">
+        Splash image on the front page.
+      </div>
+      <div id="techniques" class="tab"></div>
+      <div id="matches" class="tab"></div>
+      <div id="instruction" class="tab"></div>
+    </section>
+    <script type="text/javascript">
+      var USER = {username: '', email: ''};
+      <% if (everyauth.user){%>
+        USER = {username: '<%=everyauth.user.username%>', email: '<%=everyauth.user.email%>'}
+      <%}%>
+    </script>
+    <script type="text/javascript" src="/jsmvc/steal/steal.js?grapplenode"></script>
   </body>
 </html>
