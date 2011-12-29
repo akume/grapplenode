@@ -1,0 +1,10 @@
+<% if (assets.length > 0 ) { %>
+  <% for (var i = 0; i < assets.length ; i++) {%>
+    <li <%= assets[i]%> class="asset">
+      <%== $.View(listtemplate,assets[i])%>
+    </li>
+  <%}%>
+<%} else {%>
+  <li></li>
+  <li class='noresults'>No Titles Available</li>
+<%}%>

@@ -57,7 +57,7 @@ $.Controller('Suna.Assetlist',
     this.options.model.findAll(this.options.params.attrs(), this.callback('list'))
   },
 
-  '.asset-results button click': function (elem, ev) {
+  '.asset-results img click': function (elem, ev) {
     this.element.trigger('playasset', [$(elem).closest('.asset').model()]);
   }
 })

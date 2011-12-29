@@ -1,0 +1,19 @@
+<ul class="asset-filters">
+  <li class="search nob"> <input class="search" type= "text" value="SEARCH" autocomplete="off"/>
+    <ul class="autocomplete"></ul>
+  </li>
+  <% if (customtemplate != '') {%>
+    <%== $.View(customtemplate, {customtempobj : customtempobj, filters: filters, initialindex : initialindex})%>
+  <%} else {%>
+
+    <% for (var i = 0; i < filters.length ; i++) {%>
+      <li class="<%= filterclass%> <% if (i == initialindex ) { %> active <%}%>">
+        <a href="javascript:" alt="<%= filters[i].value%>"><%= filters[i].label%></a>
+      </li>
+    <%}%>
+  <%}%>
+  <% if (showoverlay) {%>
+    <li class="overlay"></li>
+  <%}%>
+
+</ul>

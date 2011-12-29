@@ -86,6 +86,8 @@ a
   :cursor pointer
   &:hover
     :color #fff
+  &:active
+    :color #ff0000
 
 nav
   :height 50px
@@ -168,6 +170,31 @@ section
     :display none
     &.activetab
       :display block
+  .asset-results
+    >li
+      :float left
+      :width 150px
+      :margin 0 21px 5px
+      :height 120px
+      img
+        :height 90px
+        :width 120px
+        :border none
+        :cursor pointer
+
+section
+  #techniques
+    .video
+      :height 375px
+      :text-align center
+      :display none
+    .filter
+      :float left
+      :min-height 300px
+      li.active
+        a
+          :color #ff0000
+    .list
 /*
 *header
 *
