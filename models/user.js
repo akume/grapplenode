@@ -8,7 +8,10 @@ var User = new Schema({
 	username	: {type: String, index:{unique: true} },
 	password	: String,
 	role		: {type: String, default: 'user' },
-	facebookid	: {type: Number, index:{unique: true} }
+	facebookid	: {type: Number, index:{unique: true} },
+  //a set of sequences that the user saves
+  sequences : Array,
+  favorites : Array
 });
 
 exports.User = User;

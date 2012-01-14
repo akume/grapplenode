@@ -1,2 +1,4 @@
--link up the asset list to the videoplayer or redirect to page with video player
--create counter list, continue list, and defense list based on currently playing movie
+-create counter list
+        continue list
+        defense list based on currently playing movie
+-make admin only upload fields

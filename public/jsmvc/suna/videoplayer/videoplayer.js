@@ -29,7 +29,7 @@ $.Controller('Suna.Videoplayer',
 
     this.setfeature(this.asset);
     if (this.element.css("display") == "none")
-      this.element.slideDown().html("//suna/videoplayer/views/init.ejs",{});
+      this.element.fadeIn().html("//suna/videoplayer/views/init.ejs",{});
     //TODO: place a loading image under the player prior to loading.
 
     this.load_iframe()

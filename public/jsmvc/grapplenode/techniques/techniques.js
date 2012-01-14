@@ -3,7 +3,7 @@ steal( 'jquery/controller',
       'jquery/view/ejs',
       'suna/assetlist',
       'suna/assetfilter',
-      'suna/videoplayer',
+      'grapplenode/techniques/technique',
       'mxui/data')
 	.then( './views/init.ejs', function($){
 
@@ -25,7 +25,7 @@ $.Controller('Grapplenode.Techniques',
 		this.element.html(this.view("init.ejs"));
     var technique = Grapplenode.Models.Technique;
 
-    this.element.find('.video').suna_videoplayer();
+    this.element.find('.technique').grapplenode_techniques_technique();
     /*
     * { model: technique, params: new Mxui.Data({ filter: "featured" }),
      detailtemplate: '//screeners/series/views/detailtemplate.ejs'
@@ -69,11 +69,11 @@ $.Controller('Grapplenode.Techniques',
 
   loadvideo: function(asset)
   {
-    this.element.find('.video').suna_videoplayer('playasset', asset)
+    this.element.find('.technique').grapplenode_techniques_technique('playasset', asset);
   },
 
   "{$.route} tab set": function (clientState, ev, val) {
-      if (val != "tecniques")
+      if (val != "techniques")
         this.element.find('.video').suna_videoplayer("hideasset");
     }
 })

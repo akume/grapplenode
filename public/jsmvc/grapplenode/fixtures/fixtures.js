@@ -18,12 +18,13 @@ steal("jquery/dom/fixture", function(){
                       ];
     var location = ['top', 'bottom', 'neutral'];
     var actions = ['offense', 'defense', 'counter'];
+    var vim = ['9768954', '']
 
     return {
       id: i,
 			name: "technique "+i ,
 
-      vimeoid     : '',
+      vimeoid     : $.fixture.rand( vim , 1)[0],
       youtubeid   : '7afkv4ih68c',
 
       created_at  : new Date(),
