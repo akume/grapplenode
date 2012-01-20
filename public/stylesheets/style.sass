@@ -76,8 +76,7 @@ html, body
   :color #FFF
   
 nav, section
-  :width 960px
-  :margin 0 auto
+  :min-width 960px
   :overflow auto
 
 a
@@ -90,16 +89,23 @@ a
     :color #ff0000
 
 nav
-  :height 50px
+  :height 25px
   :overflow visible
   >ul
+    :font-family 'Charlemagne', sans-serif
+    :margin 3px 0 0
     >li
       :float left
-      :margin 0 .5em 0 0
-      :font 1.8em 'Charlemagne', sans-serif
+      :margin 0 .8em 0 0
+      :font-size 1.3em
+      :height 22px
+      :line-height 1.6em
+      &.logo
+        :font-size 2em
+        :line-height inherit
     &#auth
       :float right
-      :height 50px
+      :font .6em sans-serif
       li#auth-links
         :width 85px
       a
@@ -163,12 +169,43 @@ nav
               span
                 :background url('/images/login_btn.png') no-repeat scroll 0 0 transparent
                 :color #272727
+  #sublinks
+    :clear left
+    :background-color #ff0000
+    :height 25px
+    li
+      :font-size 1.2em
+      :margin 6px 5px 0
+      :float left
+      &.search
+        :margin-top 3px
+        :float right
+      input
+        :border 0
+        :margin 0
+        :vertical-align top
+        :outline none
+        :font-size .8em
+        :height 18px
+        :width 200px
+      button
+        :border 0
+        :margin 0
+        :height 18px
+      a
+        :color #000
+        &:hover
+          :color #fff
+          :font-size 1em
+        &:active
+          :color #727272
+
 
 section
   :min-height 200px;
-  .tab
+  .nav
     :display none
-    &.activetab
+    &.activenav
       :display block
   .asset-results
     >li
@@ -182,20 +219,37 @@ section
         :width 120px
         :border none
         :cursor pointer
-
-section
-  #techniques
-    .video
-      :height 375px
-      :text-align center
-      :display none
+  #home
+    :text-align center
+    :margin 200px 0 0 0
+    :font-size 3em
+  #search
     .filter
-      :float left
-      :min-height 300px
-      li.active
-        a
-          :color #ff0000
+      li
+        :float left
+        :margin 0 21px
+        :width 150px
+        &.active
+          a
+            :color #ff0000
+        &.search
+          :display block
+          :float none
+          :text-align center
+          :width auto
+        label
+          :display block
+          :margin 0 0 2px
+        select
+          :width 120px
+    .tech
+      :display none
+      .video
+        :height 375px
+        :text-align center
+        :display none
     .list
+      :clear left
 /*
 *header
 *

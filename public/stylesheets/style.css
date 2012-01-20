@@ -66,8 +66,7 @@ html, body {
   color: #FFF;}
 
 nav, section {
-  width: 960px;
-  margin: 0 auto;
+  min-width: 960px;
   overflow: auto;}
 
 a {
@@ -80,15 +79,23 @@ a:active {
   color: #ff0000;}
 
 nav {
-  height: 50px;
+  height: 25px;
   overflow: visible;}
+nav >ul {
+  font-family: 'Charlemagne', sans-serif;
+  margin: 3px 0 0;}
 nav >ul >li {
   float: left;
-  margin: 0 .5em 0 0;
-  font: 1.8em 'Charlemagne', sans-serif;}
+  margin: 0 .8em 0 0;
+  font-size: 1.3em;
+  height: 22px;
+  line-height: 1.6em;}
+nav >ul >li.logo {
+  font-size: 2em;
+  line-height: inherit;}
 nav >ul#auth {
   float: right;
-  height: 50px;}
+  font: .6em sans-serif;}
 nav >ul#auth li#auth-links {
   width: 85px;}
 nav >ul#auth a span#facebook_icon {
@@ -148,12 +155,42 @@ nav >ul#auth ul#auth-types li a#google_login div {
 nav >ul#auth ul#auth-types li a#google_login div span {
   background: url('/images/login_btn.png') no-repeat scroll 0 0 transparent;
   color: #272727;}
+nav #sublinks {
+  clear: left;
+  background-color: #ff0000;
+  height: 25px;}
+nav #sublinks li {
+  font-size: 1.2em;
+  margin: 6px 5px 0;
+  float: left;}
+nav #sublinks li.search {
+  margin-top: 3px;
+  float: right;}
+nav #sublinks li input {
+  border: 0;
+  margin: 0;
+  vertical-align: top;
+  outline: none;
+  font-size: .8em;
+  height: 18px;
+  width: 200px;}
+nav #sublinks li button {
+  border: 0;
+  margin: 0;
+  height: 18px;}
+nav #sublinks li a {
+  color: #000;}
+nav #sublinks li a:hover {
+  color: #fff;
+  font-size: 1em;}
+nav #sublinks li a:active {
+  color: #727272;}
 
 section {
   min-height: 200px;;}
-section .tab {
+section .nav {
   display: none;}
-section .tab.activetab {
+section .nav.activenav {
   display: block;}
 section .asset-results >li {
   float: left;
@@ -166,16 +203,34 @@ section .asset-results >li img {
   width: 120px;
   border: none;
   cursor: pointer;}
-
-section #techniques .video {
+section #home {
+  text-align: center;
+  margin: 200px 0 0 0;
+  font-size: 3em;}
+section #search .filter li {
+  float: left;
+  margin: 0 21px;
+  width: 150px;}
+section #search .filter li.active a {
+  color: #ff0000;}
+section #search .filter li.search {
+  display: block;
+  float: none;
+  text-align: center;
+  width: auto;}
+section #search .filter li label {
+  display: block;
+  margin: 0 0 2px;}
+section #search .filter li select {
+  width: 120px;}
+section #search .tech {
+  display: none;}
+section #search .tech .video {
   height: 375px;
   text-align: center;
   display: none;}
-section #techniques .filter {
-  float: left;
-  min-height: 300px;}
-section #techniques .filter li.active a {
-  color: #ff0000;}
+section #search .list {
+  clear: left;}
 
 
 

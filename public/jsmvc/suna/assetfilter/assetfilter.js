@@ -11,11 +11,12 @@ $.Controller('Suna.Assetfilter',
   {
     model: null,
     params: new Mxui.Data,
-    showoverlay : true,
+    showoverlay : false,
     customtemplate: '',
     customtempobj:'',
     filterclass: '',
-    initialindex: 0
+    initialindex: 0,
+    filtertext:''
   }
 },
 /** @Prototype */
@@ -46,7 +47,8 @@ $.Controller('Suna.Assetfilter',
       customtemplate: this.options.customtemplate,
       customtempobj: this.options.customtempobj,
       filterclass: this.options.filterclass,
-      initialindex: this.options.initialindex}));
+      initialindex: this.options.initialindex,
+      filtertext: this.options.filtertext}));
     if (this.options.showoverlay)
     {
       var overlay = this.element.find(".asset-filters li.overlay");
@@ -153,7 +155,7 @@ $.Controller('Suna.Assetfilter',
   },
 
   ".asset-filters input.search blur": function (elem, ev) {
-    ($(elem).val() == '') ? $(elem).val('SEARCH') : '';
+    ($(elem).val() == '') ? $(elem).val(this.options.filtertext || 'SEARCH') : '';
     ev.stopPropagation();
     return false;
   },

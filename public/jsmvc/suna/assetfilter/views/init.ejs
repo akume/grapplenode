@@ -1,5 +1,5 @@
 <ul class="asset-filters">
-  <li class="search nob"> <input class="search" type= "text" value="SEARCH" autocomplete="off"/>
+  <li class="search nob"> <input class="search" type= "text" value="<% if (filtertext != '') { %> <%= filtertext%> <%}else{%>SEARCH<%}%>" autocomplete="off"/>
     <ul class="autocomplete"></ul>
   </li>
   <% if (customtemplate != '') {%>

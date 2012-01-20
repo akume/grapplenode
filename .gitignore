@@ -1,3 +1,6 @@
 secrets.json
-.buildpath
-.idea
+*.buildpath
+*.idea
+*.prj
+*.xls
+*.xlsm
