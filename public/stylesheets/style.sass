@@ -103,6 +103,11 @@ nav
       &.logo
         :font-size 2em
         :line-height inherit
+        a
+          :color #ff0000
+      &.active
+        a
+          :color #ff0000
     &#auth
       :float right
       :font .6em sans-serif
@@ -169,44 +174,17 @@ nav
               span
                 :background url('/images/login_btn.png') no-repeat scroll 0 0 transparent
                 :color #272727
-  #sublinks
-    :clear left
-    :background-color #ff0000
-    :height 25px
-    li
-      :font-size 1.2em
-      :margin 6px 5px 0
-      :float left
-      &.search
-        :margin-top 3px
-        :float right
-      input
-        :border 0
-        :margin 0
-        :vertical-align top
-        :outline none
-        :font-size .8em
-        :height 18px
-        :width 200px
-      button
-        :border 0
-        :margin 0
-        :height 18px
-      a
-        :color #000
-        &:hover
-          :color #fff
-          :font-size 1em
-        &:active
-          :color #727272
-
 
 section
   :min-height 200px;
-  .nav
-    :display none
-    &.activenav
-      :display block
+  .page-menu
+    :height 20px;
+    li
+      :float left
+      :margin 0 10px 5px
+      &.active
+        a
+          :color #ff0000
   .asset-results
     >li
       :float left
@@ -223,6 +201,14 @@ section
     :text-align center
     :margin 200px 0 0 0
     :font-size 3em
+  #techniques
+    h1
+      :font-size 1.6em
+      :font-weight 700
+      :padding 0 0 0 20px
+    div
+      :overflow auto
+      :margin 0 0 15px 0
   #search
     .filter
       li
@@ -242,77 +228,5 @@ section
           :margin 0 0 2px
         select
           :width 120px
-    .tech
-      :display none
-      .video
-        :height 375px
-        :text-align center
-        :display none
     .list
       :clear left
-/*
-*header
-*
-*  ul#headerlinks
-*    :width 550px
-*    li
-*      :height 100%;
-*      :vertical-align middle;
-*      :line-height 3em
-*    li.logo
-*      :float left
-*      :background-image url('/images/grapplenode.jpg')
-*      :text-indent -9000px
-*      :height 40px
-*      :width 193px
-*      :padding 0
-*  ul#auth
-*    :margin 10px 0 0 0
-*
-*    :float right
-*    li
-*      :float right
-*      :margin 0 5px 10px
-*      :padding 0 5px
-*      :background-color #272727
-*      :position relative
-*      a
-*        &:hover
-*          div#facebook_icon
-*            :background-position -29px 40px
-*          div#google_icon
-*            :background-position -77px 40px
-*
-*      &.active
-*        :background-color #fff
-*        :color #272727
-*        a
-*          :color #272727
-*          div#facebook_icon
-*            :background-position -29px 84px
-*          div#google_icon
-*            :background-position -77px 84px
-*        ul#auth-types
-*          :display block
-*nav
-*  ul
-*    :margin 10px 0
-*    :height 3em
-*    :-moz-border-radius 1em 4em 1em 4em
-*    :-webkit-border-radius 1em 4em 1em 4em
-*    :border-radius 1em 4em 1em 4em
-*    :background #ffffff
-*    :background -moz-linear-gradient(top, #ffffff 2%, #541616 19%, #1c1c1c 100%)
-*    :background -webkit-gradient(linear, left top, left bottom, color-stop(2%,#ffffff), color-stop(19%,#541616), color-stop(100%,#1c1c1c))
-*    :background -webkit-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%)
-*    :background -o-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%)
-*    :background -ms-linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%)
-*    :filter progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#1c1c1c',GradientType=0 )
-*    :background linear-gradient(top, #ffffff 2%,#541616 19%,#1c1c1c 100%)
-*    li
-*      :float left
-*
-*h1
-*  :font-size 1.3em
-*
-*/

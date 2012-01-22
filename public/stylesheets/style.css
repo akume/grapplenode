@@ -93,6 +93,10 @@ nav >ul >li {
 nav >ul >li.logo {
   font-size: 2em;
   line-height: inherit;}
+nav >ul >li.logo a {
+  color: #ff0000;}
+nav >ul >li.active a {
+  color: #ff0000;}
 nav >ul#auth {
   float: right;
   font: .6em sans-serif;}
@@ -155,43 +159,16 @@ nav >ul#auth ul#auth-types li a#google_login div {
 nav >ul#auth ul#auth-types li a#google_login div span {
   background: url('/images/login_btn.png') no-repeat scroll 0 0 transparent;
   color: #272727;}
-nav #sublinks {
-  clear: left;
-  background-color: #ff0000;
-  height: 25px;}
-nav #sublinks li {
-  font-size: 1.2em;
-  margin: 6px 5px 0;
-  float: left;}
-nav #sublinks li.search {
-  margin-top: 3px;
-  float: right;}
-nav #sublinks li input {
-  border: 0;
-  margin: 0;
-  vertical-align: top;
-  outline: none;
-  font-size: .8em;
-  height: 18px;
-  width: 200px;}
-nav #sublinks li button {
-  border: 0;
-  margin: 0;
-  height: 18px;}
-nav #sublinks li a {
-  color: #000;}
-nav #sublinks li a:hover {
-  color: #fff;
-  font-size: 1em;}
-nav #sublinks li a:active {
-  color: #727272;}
 
 section {
   min-height: 200px;;}
-section .nav {
-  display: none;}
-section .nav.activenav {
-  display: block;}
+section .page-menu {
+  height: 20px;;}
+section .page-menu li {
+  float: left;
+  margin: 0 10px 5px;}
+section .page-menu li.active a {
+  color: #ff0000;}
 section .asset-results >li {
   float: left;
   width: 150px;
@@ -207,6 +184,13 @@ section #home {
   text-align: center;
   margin: 200px 0 0 0;
   font-size: 3em;}
+section #techniques h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  padding: 0 0 0 20px;}
+section #techniques div {
+  overflow: auto;
+  margin: 0 0 15px 0;}
 section #search .filter li {
   float: left;
   margin: 0 21px;
@@ -223,77 +207,5 @@ section #search .filter li label {
   margin: 0 0 2px;}
 section #search .filter li select {
   width: 120px;}
-section #search .tech {
-  display: none;}
-section #search .tech .video {
-  height: 375px;
-  text-align: center;
-  display: none;}
 section #search .list {
   clear: left;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

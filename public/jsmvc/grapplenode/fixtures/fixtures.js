@@ -2,7 +2,7 @@
 
 steal("jquery/dom/fixture", function(){
 	
-	$.fixture.make("technique", 10, function(i, technique){
+	$.fixture.make("technique", 7, function(i, technique){
     var classifications = ['pass' , 'sweep', 'submission', 'takedown', 'transition', 'control'];
     var positions = ['standing',
                       'mount', 'smount',
