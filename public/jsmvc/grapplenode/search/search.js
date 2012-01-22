@@ -30,8 +30,8 @@ $.Controller('Grapplenode.Search',
             {value: 'takedown', label: 'Takedown'},
             {value: 'pass', label: 'Pass'},
             {value: 'sweep', label: 'Sweep'},
-            {value: 'transition', label: 'Transition'},
-            {value: 'control', label: 'Control'},
+            {value: 'tc', label: 'Transition/Control'},
+            {value: 'escape', label: 'Escape'},
             {value: 'submission', label: 'Submission'}]
         },
         {
@@ -60,7 +60,7 @@ $.Controller('Grapplenode.Search',
             {value: 'rules', label: 'IBJJF Rules'}]
         },
         {
-          selectlabel: "classifications",
+          selectlabel: "orientation",
           selectoptions: [{value: '', label: ''},
             {value: 'neutral', label: 'Neutral'},
             {value: 'top', label: 'Top'},
