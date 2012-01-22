@@ -19,19 +19,21 @@ $.Controller('Grapplenode.Navigation',
 	},
 
   "{$.route} nav set": function (clientState, ev, val) {
-    this.settab(val);
+    this.setnav(val);
   },
 
   "{$.route} search set": function (clientState, ev, val) {
-    this.settab("search");
+    this.setnav("search");
   },
 
-  settab: function(val)
-  {
-    this.element.find('.nav.active').removeClass('active').end()
+  "{$.route} techniques set": function (clientState, ev, val) {
+    this.setnav("techniques");
+  },
 
-    $('body').find('.activenav').removeClass('activenav').end()
-      .find('#' + val).addClass('activenav')
+  setnav: function(val)
+  {
+    this.element.find('.active').removeClass('active').end()
+      .find('.nav[alt ='+val+']').parent().addClass('active')
 
     if (this.options.onNav)
       this.options.onNav(val);
