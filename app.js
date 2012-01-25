@@ -113,10 +113,12 @@ var error_controller= require("./controllers/error_controller");
 var admin_controller= require("./controllers/admin_controller");
 
 app.get('/', index_controller.get_index);
+app.get('/techniques', technique_controller.get_technique);
+app.get('/techniques/:id', technique_controller.get_technique);
 app.get('/admin/', admin_controller.get_admin);
 /*
-app.get('/techniques', authUser, technique_controller.get_technique);
-app.get('/techniques/:id', authUser, technique_controller.get_technique);
+
+
 
 app.get('/error/:message', error_controller.get_error);
 app.get('/admin/', authUser, adminUser, admin_controller.get_admin);

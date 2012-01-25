@@ -1,13 +1,15 @@
 steal(
 	'./models/models.js',		// steals all your models
-	'./fixtures/fixtures.js',	// sets up fixtures for your models
+	//'./fixtures/fixtures.js',	// sets up fixtures for your models
   'jquery/dom/route',
   'grapplenode/navigation',
   'grapplenode/home',
   'grapplenode/search',
   'grapplenode/techniques',
+  'grapplenode/tech',
   'grapplenode/locker',
   'grapplenode/community',
+
 	function(){					// configure your application
     // configure your application
     $.ajaxSetup({ cache: false })

@@ -47,27 +47,27 @@ $.Controller('Grapplenode.Techniques',
   setfeatured: function()
   {
     var technique = Grapplenode.Models.Technique;
-    this.element.find('.takedowns').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.takedowns').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "takedown" }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.passes').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.passes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "pass" }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.sweeps').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.sweeps').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "sweep" }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.tc').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.tc').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "tc" }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.escapes').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.escapes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "escape" }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.submissions').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.submissions').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "submission" }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
   },
@@ -102,7 +102,6 @@ $.Controller('Grapplenode.Techniques',
 
   setpopular: function()
   {
-
     var technique = Grapplenode.Models.Technique;
      /*this.element.find('.takedowns').suna_assetlist({ model: technique, params: this.options.params,
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
@@ -128,7 +127,6 @@ $.Controller('Grapplenode.Techniques',
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
   }
-
 
 })
 

@@ -16,7 +16,7 @@ steal("jquery/dom/fixture", function(){
                       '50/50G',
                       'xG','singlelegxG'
                       ];
-    var location = ['top', 'bottom', 'neutral'];
+    var locations = ['top', 'bottom', 'neutral'];
     var actions = ['offense', 'defense', 'counter'];
     var vim = ['9768954', '']
 
@@ -39,6 +39,7 @@ steal("jquery/dom/fixture", function(){
 
       classification: $.fixture.rand( classifications , 1)[0],
       position: $.fixture.rand( positions , 1)[0],
+      location: $.fixture.rand( locations , 1)[0],
       action: $.fixture.rand( actions , 1)[0],
       meta        : {},
 
