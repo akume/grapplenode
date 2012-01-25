@@ -1,7 +1,7 @@
 <% for (var i = 0; i < filters.length ; i++) {%>
   <li>
     <label><%= filters[i].selectlabel%></label>
-    <select>
+    <select id="<%= filters[i].selectid%>">
       <% for (var j = 0; j < filters[i].selectoptions.length ; j++) {%>
         <option value="<%= filters[i].selectoptions[j].value%>"><%= filters[i].selectoptions[j].label%></option>
       <%}%>

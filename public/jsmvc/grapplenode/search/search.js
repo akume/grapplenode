@@ -7,7 +7,9 @@ steal( 'jquery/controller','jquery/view/ejs' )
 $.Controller('Grapplenode.Search',
 /** @Static */
 {
-	defaults : {}
+	defaults : {
+    params: new Mxui.Data({ })
+  }
 },
 /** @Prototype */
 {
@@ -20,11 +22,13 @@ $.Controller('Grapplenode.Search',
      detailtemplate: '//screeners/series/views/detailtemplate.ejs'
      }
      * */
-    this.element.find('.filter').suna_assetfilter({ model: technique, params: this.options.params,
-      customtemplate:'//grapplenode/techniques/views/filter_template.ejs',
+
+     this.element.find('.filter').suna_assetfilter({ model: technique, params: this.options.params,
+      customtemplate:'//grapplenode/search/views/filter_template.ejs',
       filtertext:'filter by keyword',
       filters: [
         {
+          selectid:'classification',
           selectlabel: "classifications",
           selectoptions: [{value: '', label: ''},
             {value: 'takedown', label: 'Takedown'},
@@ -35,6 +39,7 @@ $.Controller('Grapplenode.Search',
             {value: 'submission', label: 'Submission'}]
         },
         {
+          selectid:'position',
           selectlabel: "positions",
           selectoptions: [{value: '', label: ''},
             {value: 'standing', label: 'Standing'},
@@ -60,13 +65,15 @@ $.Controller('Grapplenode.Search',
             {value: 'rules', label: 'IBJJF Rules'}]
         },
         {
-          selectlabel: "orientation",
+          selectid:'location',
+          selectlabel: "locations",
           selectoptions: [{value: '', label: ''},
             {value: 'neutral', label: 'Neutral'},
             {value: 'top', label: 'Top'},
             {value: 'bottom', label: 'Bottom'}]
         },
         {
+          selectid: "action",
           selectlabel: "actions",
           selectoptions: [{value: '', label: ''},
             {value: 'offense', label: 'Offense'},
@@ -74,6 +81,7 @@ $.Controller('Grapplenode.Search',
             {value: 'counter', label: 'Counter'}]
         },
         {
+          selectid: "order",
           selectlabel: "sort by",
           selectoptions: [{value: 'relevance', label: 'Relevance'},
             {value: 'upload', label: 'Upload Date'},
@@ -83,11 +91,24 @@ $.Controller('Grapplenode.Search',
         }
       ]});
 
-
     this.element.find('.list').suna_assetlist({ model: technique, params: this.options.params,
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
-	}
+	},
+
+  "{$.route} search set": function (clientState, ev, val) {
+    var technique = Grapplenode.Models.Technique;
+    this.options.params.attr('search', val);
+  },
+
+  "select change": function(elem, ev)
+  {
+    if($(elem).val == '')
+      this.options.params.removeAttr($(elem).attr('id'));
+    else
+      this.options.params.attr($(elem).attr('id'), $(elem).val())
+  }
+
 })
 
 });

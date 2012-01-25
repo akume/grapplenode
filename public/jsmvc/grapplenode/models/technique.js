@@ -9,11 +9,12 @@ steal('jquery/model', function(){
 $.Model('Grapplenode.Models.Technique',
 /* @Static */
 {
-	findAll: "/techniques.json",
-  	findOne : "/techniques/{id}.json", 
-  	create : "/techniques.json",
- 	update : "/techniques/{id}.json",
-  	destroy : "/techniques/{id}.json"
+  id:       '_id',
+	findAll:  "/techniques",
+  findOne : "/techniques/{_id}",
+  create :  "/techniques",
+ 	update :  "/techniques/{_id}",
+  destroy : "/techniques/{_id}"
 },
 /* @Prototype */
 {});

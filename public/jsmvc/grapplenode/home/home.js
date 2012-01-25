@@ -28,7 +28,7 @@ $.Controller('Grapplenode.Home',
 
   search:function(elem, ev)
   {
-    $.route.attrs({search: $(elem).val()}, true)
+    $.route.attrs({search: $(elem).val().replace(' ', '.')}, true)
     $(elem).val('');
   }
 })
