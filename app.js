@@ -8,7 +8,7 @@ var express 	= require('express'),
 	db_host     = "127.0.0.1",
 	db_name     = "grapplenode",
 	app_version = "1.0.0",
-	app_port    = 3001,
+	app_port    = process.env.PORT || 3001,
 
 	app = module.exports = express.createServer(),
 	db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
