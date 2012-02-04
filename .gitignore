@@ -1,10 +1,9 @@
-secrets.json
 *.buildpath
 *.idea
 *.prj
 *.xls
 *.xlsm
+*.xlsx
 node_modules
-dummy.csv
+*.csv
 dummydata.json
-techniques.xlsx
