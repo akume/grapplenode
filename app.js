@@ -7,7 +7,7 @@ var express 	= require('express'),
 	everyauth	= require('everyauth'),
 	db_host     = "127.0.0.1",
 	db_name     = "grapplenode",
-	app_version = "0.0.1",
+	app_version = "1.0.0",
 	app_port    = 3001,
 
 	app = module.exports = express.createServer(),
@@ -17,33 +17,33 @@ var express 	= require('express'),
 
 
 /*
-* models
-*
-* all the model imports and mongoose mappings and stuff
-*
-*/
+ * models
+ *
+ * all the model imports and mongoose mappings and stuff
+ *
+ */
 mongoose.model("User", require("./models/user").User);
 mongoose.model("Technique", require("./models/technique").Technique);
 
 //Authentication
 var util = require('util'),
-	fs	 = require('fs'),
-	Promise = everyauth.Promise,
-	users 	= require('./lib/users'),
-	oauthSecrets = JSON.parse(fs.readFileSync('secrets.json', 'utf-8')),
-	User = mongoose.model("User");;
+  fs	 = require('fs'),
+  Promise = everyauth.Promise,
+  users 	= require('./lib/users'),
+  oauthSecrets = JSON.parse(fs.readFileSync('secrets.json', 'utf-8')),
+  User = mongoose.model("User");;
 
 everyauth.facebook
-	.appId(oauthSecrets.facebook.appId)
-	.appSecret(oauthSecrets.facebook.appSecret)
-	.scope('email')
-	.findOrCreateUser( function (session, accessToken, accessTokExtra, fbUserMetadata) {
-		console.log(fbUserMetadata);
-		var promise = new Promise();
-		users.findOrCreateByFacebookData(session, fbUserMetadata, promise);
-		return promise;
-	})
-	.redirectPath('/');
+  .appId(oauthSecrets.facebook.appId)
+  .appSecret(oauthSecrets.facebook.appSecret)
+  .scope('email')
+  .findOrCreateUser( function (session, accessToken, accessTokExtra, fbUserMetadata) {
+    console.log(fbUserMetadata);
+    var promise = new Promise();
+    users.findOrCreateByFacebookData(session, fbUserMetadata, promise);
+    return promise;
+  })
+  .redirectPath('/');
 
 everyauth.google
   .appId(oauthSecrets.google.clientId)

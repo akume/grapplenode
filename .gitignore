@@ -4,3 +4,7 @@ secrets.json
 *.prj
 *.xls
 *.xlsm
+node_modules
+dummy.csv
+dummydata.json
+techniques.xlsx
