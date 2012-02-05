@@ -1,7 +1,9 @@
 steal( 'jquery/controller',
         'jquery/view/ejs',
         'mxui/data')
-	.then( './views/init.ejs', function($){
+	.then( './views/init.ejs',
+        './views/filter_template.ejs',
+        function($){
 
 /**
  * @class Grapplenode.Search
