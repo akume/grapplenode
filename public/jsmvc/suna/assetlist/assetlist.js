@@ -1,5 +1,7 @@
 steal( 'jquery/controller','jquery/view/ejs' )
-	.then( './views/init.ejs', function($){
+	.then( './views/init.ejs',
+        './views/list.ejs',
+        function($){
 
 /**
  * @class Suna.Assetlist
