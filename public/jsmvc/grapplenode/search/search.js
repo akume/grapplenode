@@ -1,4 +1,6 @@
-steal( 'jquery/controller','jquery/view/ejs' )
+steal( 'jquery/controller',
+        'jquery/view/ejs',
+        'mxui/data')
 	.then( './views/init.ejs', function($){
 
 /**

@@ -14,7 +14,7 @@ steal(
     {					// configure your application
         var username = window.USER ? window.USER.username: '';
         // configure your application
-        $.ajaxSetup({ cache: false })
+        $.ajaxSetup({ cache: false });
         //navigation
         $.route.ready(false)
           ("/:nav", { nav: "home" })
