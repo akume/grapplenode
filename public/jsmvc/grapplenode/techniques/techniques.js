@@ -4,7 +4,9 @@ steal('jquery/controller',
       'mxui/data',
       'suna/assetlist',
       'suna/assetfilter')
-	.then( './views/init.ejs', function($){
+	.then( './views/init.ejs',
+        './views/list_template.ejs',
+        function($){
 
 /**
  * @class Grapplenode.Techniques

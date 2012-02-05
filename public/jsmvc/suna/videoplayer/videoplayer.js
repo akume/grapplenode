@@ -1,5 +1,10 @@
 steal( 'jquery/controller','jquery/view/ejs' )
-	.then( './views/init.ejs', function($){
+	.then( './views/init.ejs',
+        './views/ivimeo.ejs',
+        './views/iyoutube.ejs',
+        './views/vimeo.ejs',
+        './views/youtube.ejs',
+        function($){
 
 /**
  * @class Suna.Videoplayer
