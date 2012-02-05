@@ -5,25 +5,73 @@
 var express 	= require('express'),
 	mongoose    = require("mongoose"),
 	everyauth	= require('everyauth'),
-	db_host     = "127.0.0.1",
-	db_name     = "grapplenode",
 	app_version = "1.0.0",
-	app_port    = process.env.PORT || 3001,
+	app_port,
+    db,
+	app = module.exports = express.createServer();
 
-	app = module.exports = express.createServer(),
-	db  = mongoose.connect("mongodb://" + db_host + "/" + db_name);
+// Configuration
+var pub = __dirname + '/public';
+app.configure(function(){
+    //app.use(express.logger());
+    app.use(express.methodOverride());
+    app.use(express.bodyParser());
 
+    app.use(express.cookieParser());
+    app.use(express.session({ secret: 'cum to me' }));
+    app.use(everyauth.middleware());
+    everyauth.everymodule.findUserById( function (userId, callback) {
+        User.findById(userId, callback);
+        // callback has the signature, function (err, user) {...}
+    });
 
+    app.use(app.router);
+    app.use(express.compiler({ src: pub, enable: ['sass'] }));
+
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'ejs');
+
+    console.log("grapplenode version " + app_version + " now running on port " + app_port);
+});
+
+app.configure('development', function(){
+    app_port= 3001;
+    db  = mongoose.connect("mongodb://127.0.0.1/grapplenode");
+
+    app.use(express.static(pub));
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
+});
+
+app.configure('production', function(){
+    app_port= process.env.PORT;
+    db  = mongoose.connect(process.env.MONGOLAB_URI);
+
+    var oneYear = 31557600000;
+    app.use(express.static(pub, {maxAge:oneYear}));
+    app.use(express.errorHandler());
+});
+
+app.dynamicHelpers({
+    session: function(req, res)
+    {
+        return req.session;
+    },
+    flash: function(req, res)
+    {
+        return req.flash();
+    }
+});
 
 
 /*
  * models
- *
  * all the model imports and mongoose mappings and stuff
- *
  */
 mongoose.model("User", require("./models/user").User);
 mongoose.model("Technique", require("./models/technique").Technique);
+
+
 
 //Authentication
 var util = require('util'),
@@ -57,54 +105,6 @@ everyauth.google
   })
   .redirectPath('/');
 
-
-// Configuration
-var pub = __dirname + '/public';
-app.configure(function(){
-  //app.use(express.logger());
-  app.use(express.methodOverride());
-  app.use(express.bodyParser());
-
-  app.use(express.cookieParser());
-  app.use(express.session({ secret: 'cum to me' }));
-  app.use(everyauth.middleware());
-  everyauth.everymodule.findUserById( function (userId, callback) {
-	  User.findById(userId, callback);
-	  // callback has the signature, function (err, user) {...}
-	});
-
-  app.use(app.router);
-  app.use(express.compiler({ src: pub, enable: ['sass'] })); 
-
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-
-  console.log("grapplenode version " + app_version + " now running on port " + app_port);
-}); 
-
-app.configure('development', function(){
-  app.use(express.static(pub));
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
-});
-
-app.configure('production', function(){
-  var oneYear = 31557600000;
-  app.use(express.static(pub, {maxAge:oneYear}));
-  app.use(express.errorHandler()); 
-});
-
-app.dynamicHelpers({
-	session: function(req, res)
-	{
-		return req.session;
-	},
-	flash: function(req, res)
-	{
-		return req.flash();
-	}
-});
-
-
 // Routes
 everyauth.helpExpress(app);
 var index_controller= require("./controllers/index_controller");
@@ -117,9 +117,6 @@ app.get('/techniques', technique_controller.get_technique);
 app.get('/techniques/:id', technique_controller.get_technique);
 app.get('/admin/', admin_controller.get_admin);
 /*
-
-
-
 app.get('/error/:message', error_controller.get_error);
 app.get('/admin/', authUser, adminUser, admin_controller.get_admin);
 */
