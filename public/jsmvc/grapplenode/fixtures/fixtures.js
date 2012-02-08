@@ -21,7 +21,7 @@ steal("jquery/dom/fixture", function(){
     var vim = ['9768954', '']
 
     return {
-      id: i,
+      _id: i,
 			name: "technique "+i ,
 
       vimeoid     : $.fixture.rand( vim , 1)[0],

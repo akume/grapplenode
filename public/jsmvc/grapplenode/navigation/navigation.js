@@ -30,6 +30,10 @@ $.Controller('Grapplenode.Navigation',
     this.setnav("techniques");
   },
 
+  "{$.route} t set": function (clientState, ev, val) {
+      this.setnav("t");
+  },
+
   setnav: function(val)
   {
     this.element.find('.active').removeClass('active').end()

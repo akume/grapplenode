@@ -19,18 +19,18 @@ $.Controller('Grapplenode.Search',
 {
 	init : function(){
 		this.element.html("//grapplenode/search/views/init.ejs",{});
-    var technique = Grapplenode.Models.Technique;
+        var technique = Grapplenode.Models.Technique;
 
-    /*
-     * { model: technique, params: new Mxui.Data({ filter: "featured" }),
-     detailtemplate: '//screeners/series/views/detailtemplate.ejs'
-     }
-     * */
+        /*
+        * { model: technique, params: new Mxui.Data({ filter: "featured" }),
+        detailtemplate: '//screeners/series/views/detailtemplate.ejs'
+        }
+        * */
 
-     this.element.find('.filter').suna_assetfilter({ model: technique, params: this.options.params,
-      customtemplate:'//grapplenode/search/views/filter_template.ejs',
-      filtertext:'filter by keyword',
-      filters: [
+        this.element.find('.filter').suna_assetfilter({ model: technique, params: this.options.params,
+        customtemplate:'//grapplenode/search/views/filter_template.ejs',
+        filtertext:'filter by keyword',
+        filters: [
         {
           selectid:'classification',
           selectlabel: "classifications",

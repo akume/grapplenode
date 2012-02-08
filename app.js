@@ -134,6 +134,6 @@ if (!module.parent) {
 // so it runs again after it exits.
 var autoexit_watch=require('./lib/autorestart');
 
-var on_autoexit=function (filename) {console.log("bye bye"); } // if it returns false it means to ignore exit this time;  
+var on_autoexit=function (filename) {console.log("bye bye"); }; // if it returns false it means to ignore exit this time;
 autoexit_watch(__dirname,".js", on_autoexit);
 //autoexit_watch(__dirname,".html", on_autoexit);

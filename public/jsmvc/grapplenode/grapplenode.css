@@ -1,29 +1,217 @@
-body {
-	font-family:Lucida Sans,Lucida Grande,Arial,sans-serif;
-	margin:0;
-	line-height:22px;
-	width:960px;
-	margin:0 auto;
-}
-h1 {
-	padding:30px 0 10px;
-	margin-top:0;
-	line-height:30px;
-}
 
-ul{
-	padding:0 0 0 15px; 
-	list-style : none;
-}
+
+html {
+  color: #000;
+  background: #FFF;}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;}
+
+fieldset, img {
+  border: 0;}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;}
+
+ol, ul {
+  list-style: none;}
+
+caption, th {
+  text-align: left;}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;}
+
+
+abbr, acronym {
+  border: 0;
+  font-variant: normal;}
+
+sup {
+  vertical-align: text-top;}
+
+sub {
+  vertical-align: text-bottom;}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;}
+
+
+legend {
+  color: #000;}
+
+
+
+
+@font-face {
+  font-family: 'Gabriola';
+  src: url('Gabriola.ttf');}
+
+@font-face {
+  font-family: 'Charlemagne';
+  src: url('CharlemagneStd-Bold.otf');}
+
+html, body {
+  font: .8em Lucida Sans,Lucida Grande,Arial,sans-serif;;
+  background-color: #000;
+  color: #FFF;}
+
+nav, section {
+  min-width: 960px;
+  overflow: auto;}
 
 a {
-	color:#ae3d26;
-	text-decoration:none;
-}
+  color: #727272;
+  text-decoration: none;
+  cursor: pointer;}
+a:hover {
+  color: #fff;}
+a:active {
+  color: #ff0000;}
 
-a:hover { text-decoration:underline; }
+nav {
+  height: 25px;
+  overflow: visible;}
+nav >ul {
+  font-family: 'Charlemagne', sans-serif;
+  margin: 3px 0 0;}
+nav >ul >li {
+  float: left;
+  margin: 0 .8em 0 0;
+  font-size: 1.3em;
+  height: 22px;
+  line-height: 1.6em;}
+nav >ul >li.logo {
+  font-size: 2em;
+  line-height: inherit;}
+nav >ul >li.logo a {
+  color: #ff0000;}
+nav >ul >li.active a {
+  color: #ff0000;}
+nav >ul#auth {
+  float: right;
+  font: .6em sans-serif;}
+nav >ul#auth li#auth-links {
+  width: 85px;}
+nav >ul#auth a span#facebook_icon {
+  background-image: url('/images/login_icon.png');
+  background-position: -29px 62px;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+  vertical-align: middle;}
+nav >ul#auth a span#google_icon {
+  background-image: url('/images/login_icon.png');
+  background-position: -77px 62px;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+  vertical-align: middle;}
+nav >ul#auth a:hover span#facebook_icon {
+  background-position: -29px 40px;}
+nav >ul#auth a:hover span#google_icon {
+  background-position: -77px 40px;}
+nav >ul#auth ul#auth-types {
+  font-size: .6em;
+  display: none;
+  background-color: #fff;
+  color: #272727;
+  width: 265px;
+  height: 30px;
+  padding: 5px 0;}
+nav >ul#auth ul#auth-types li {
+  float: left;
+  margin: 0;
+  background-color: #fff;
+  color: #272727;}
+nav >ul#auth ul#auth-types li a {
+  cursor: pointer;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  background: none repeat scroll 0 0 transparent;
+  border: medium none;}
+nav >ul#auth ul#auth-types li a div {
+  height: 25px;
+  padding: 0 10px 0 0;
+  text-align: left;}
+nav >ul#auth ul#auth-types li a div span {
+  height: 25px;
+  padding: 0 0 0 34px;
+  display: block;
+  line-height: 25px;
+  color: #fff;}
+nav >ul#auth ul#auth-types li a#facebook_login div {
+  background: url('/images/login_btn.png') no-repeat scroll right -75px transparent;}
+nav >ul#auth ul#auth-types li a#facebook_login div span {
+  background: url('/images/login_btn.png') no-repeat scroll 0 -75px transparent;}
+nav >ul#auth ul#auth-types li a#google_login div {
+  background: url('/images/login_btn.png') no-repeat scroll right 0 transparent;}
+nav >ul#auth ul#auth-types li a#google_login div span {
+  background: url('/images/login_btn.png') no-repeat scroll 0 0 transparent;
+  color: #272727;}
 
-hr {
-	border:none;
-	border-top:1px dotted #000;
-}
+section {
+  min-height: 200px;;}
+section .page-menu {
+  height: 20px;;}
+section .page-menu li {
+  float: left;
+  margin: 0 10px 5px;}
+section .page-menu li.active a {
+  color: #ff0000;}
+section .asset-results >li {
+  float: left;
+  width: 150px;
+  margin: 0 21px 5px;
+  height: 120px;
+  color: #ff9900;}
+section .asset-results >li img {
+  height: 90px;
+  width: 120px;
+  border: none;
+  cursor: pointer;}
+section #home {
+  text-align: center;
+  margin: 200px 0 0 0;
+  font-size: 3em;}
+section #techniques h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  padding: 0 0 0 20px;}
+section #techniques div {
+  overflow: auto;
+  margin: 0 0 15px 0;}
+section #search .filter li {
+  float: left;
+  margin: 0 21px;
+  width: 150px;}
+section #search .filter li.active a {
+  color: #ff0000;}
+section #search .filter li.search {
+  display: block;
+  float: none;
+  text-align: center;
+  width: auto;}
+section #search .filter li label {
+  display: block;
+  margin: 0 0 2px;}
+section #search .filter li select {
+  width: 120px;}
+section #search .list {
+  clear: left;}
+section #t {
+  background-color: #727272;
+  padding: 20px;
+  height: 378px;}
+section #t .videocontainer {
+  float: left;}

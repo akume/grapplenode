@@ -1,7 +1,7 @@
 <ul>
-  <li><img src="http://img.youtube.com/vi/<%= this['youtubeid'] %>/2.jpg" alt="<%= this.name %> image"/></li>
+  <li><a href="/#!/t/<%= this['_id'] %>"><img src="http://img.youtube.com/vi/<%= this['youtubeid'] %>/2.jpg" alt="<%= this.name %> image"/></a></li>
   <li>
-    <h3><%= this.name %></h3>
+    <h3><a href="/#!/t/<%= this['_id'] %>"><%= this.name %></a></h3>
   </li>
   <li><%= this.position %></li>
 </ul>

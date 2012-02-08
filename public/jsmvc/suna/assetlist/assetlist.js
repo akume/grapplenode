@@ -27,7 +27,8 @@ $.Controller('Suna.Assetlist',
   },
 
 	init : function(){
-    this.updateView();
+    this.element.html(this.view('init'));
+    this.newRequest()
 	},
 
   update : function(options){
@@ -36,8 +37,6 @@ $.Controller('Suna.Assetlist',
   },
 
   updateView: function () {
-    this.element.html(this.view('init'));
-    this.options.model.findAll(this.options.params.attrs(), this.callback('list'));
   },
 
   list: function (assets) {
@@ -51,11 +50,11 @@ $.Controller('Suna.Assetlist',
       //want to throttle for rapid updates
       params.attr('updating', true)
       clearTimeout(this.newRequestTimer, 100)
-      this.newRequestTimer = setTimeout(this.callback('newRequest', attr, val))
+      this.newRequestTimer = setTimeout(this.callback('newRequest'))
     }
   },
 
-  newRequest: function (attr, val) {
+  newRequest: function () {
     this.options.model.findAll(this.options.params.attrs(), this.callback('list'))
   },
 

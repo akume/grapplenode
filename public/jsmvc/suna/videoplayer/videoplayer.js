@@ -33,11 +33,10 @@ $.Controller('Suna.Videoplayer',
     $('body').scrollTop(0);
 
     this.setfeature(this.asset);
-    if (this.element.css("display") == "none")
-      this.element.fadeIn().html("//suna/videoplayer/views/init.ejs",{});
+    this.element.fadeIn().html("//suna/videoplayer/views/init.ejs",{});
     //TODO: place a loading image under the player prior to loading.
 
-    this.load_iframe()
+    this.load_iframe();
     /*TODO will eventually want to have a player to avoid cross domain errors.
     (navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod') ?
       this.load_iframe() :
@@ -46,10 +45,10 @@ $.Controller('Suna.Videoplayer',
 
   load_flash_player: function () {
     //TODO: have to check if this will cause a memory leak.
-    this.player.api_unload()
+    this.player.api_unload();
     if (this.player == null) {
       this.element.find('.flashcontainer')
-        .html( (this.asset.vimeoid != '' ? this.view('vimeo') : this.view('youtube')), this.asset)
+        .html( (this.asset.vimeoid != '' ? this.view('vimeo') : this.view('youtube')), this.asset);
       this.player= document.getElementById('flashplayer');
 
     } else {
@@ -60,7 +59,7 @@ $.Controller('Suna.Videoplayer',
   load_iframe: function()
   {
     this.element.find('.flashcontainer')
-      .html( (this.asset.vimeoid != '' ? this.view('ivimeo', this.asset) : this.view('iyoutube', this.asset)))
+      .html( (this.asset.vimeoid && this.asset.vimeoid != '' ? this.view('ivimeo', this.asset) : this.view('iyoutube', this.asset)))
   }
 })
 
