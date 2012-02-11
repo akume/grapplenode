@@ -31,7 +31,7 @@ $.Controller('Grapplenode.Techniques',
 
   "{$.route} techniques set": function (clientState, ev, val) {
     this.element.find('.page-menu .active').removeClass('active').end()
-      .find('.page-menu li a[alt ='+val+']').parent().addClass('active')
+      .find('.page-menu li a[alt ='+val+']').parent().addClass('active');
 
       if (val == 'featured')
         this.setfeatured();
@@ -49,27 +49,27 @@ $.Controller('Grapplenode.Techniques',
   setfeatured: function()
   {
     var technique = Grapplenode.Models.Technique;
-    this.element.find('.takedowns').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "takedown" }),
+    this.element.find('.takedowns').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "takedown", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.passes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "pass" }),
+    this.element.find('.passes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "pass", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.sweeps').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "sweep" }),
+    this.element.find('.sweeps').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "sweep", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.tc').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "tc" }),
+    this.element.find('.tc').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "tc", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.escapes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "escape" }),
+    this.element.find('.escapes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "escape", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.submissions').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "submission" }),
+    this.element.find('.submissions').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "submission", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
   },
@@ -77,27 +77,27 @@ $.Controller('Grapplenode.Techniques',
   setsequences: function()
   {
     var technique = Grapplenode.Models.Technique;
-    this.element.find('.takedowns').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.takedowns').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "takedown", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.passes').suna_assetlist({ model: technique, params: this.options.params,
-      listtemplate: '//grapplenode/techniques/views/list_template.ejs'
-    });
-/*
-    this.element.find('.sweeps').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.passes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "pass", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.tc').suna_assetlist({ model: technique, params: this.options.params,
-      listtemplate: '//grapplenode/techniques/views/list_template.ejs'
-    });
-*/
-    this.element.find('.escapes').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.sweeps').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "sweep", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.submissions').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.tc').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "tc", limit:7 }),
+      listtemplate: '//grapplenode/techniques/views/list_template.ejs'
+    });
+
+    this.element.find('.escapes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "escape", limit:7 }),
+      listtemplate: '//grapplenode/techniques/views/list_template.ejs'
+    });
+
+    this.element.find('.submissions').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "submission", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
   },
@@ -105,27 +105,27 @@ $.Controller('Grapplenode.Techniques',
   setpopular: function()
   {
     var technique = Grapplenode.Models.Technique;
-     /*this.element.find('.takedowns').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.takedowns').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "takedown", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.passes').suna_assetlist({ model: technique, params: this.options.params,
-      listtemplate: '//grapplenode/techniques/views/list_template.ejs'
-    });
-*/
-    this.element.find('.sweeps').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.passes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "pass", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.tc').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.sweeps').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "sweep", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.escapes').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.tc').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "tc", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
 
-    this.element.find('.submissions').suna_assetlist({ model: technique, params: this.options.params,
+    this.element.find('.escapes').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "escape", limit:7 }),
+      listtemplate: '//grapplenode/techniques/views/list_template.ejs'
+    });
+
+    this.element.find('.submissions').suna_assetlist({ model: technique, params: new Mxui.Data({classification: "submission", limit:7 }),
       listtemplate: '//grapplenode/techniques/views/list_template.ejs'
     });
   }

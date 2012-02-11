@@ -17,6 +17,14 @@ $.Model('Grapplenode.Models.Technique',
   destroy : "/techniques/{_id}"
 },
 /* @Prototype */
-{});
+{
+  formatname: function(){
+    if (this.name.length > 20)
+      return this.name.substring(0,20) + "...";
+    else
+      return this.name;
+  }
 
-})
+});
+
+});

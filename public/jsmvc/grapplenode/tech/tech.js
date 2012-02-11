@@ -12,7 +12,7 @@ $.Controller('Grapplenode.Tech',
 /** @Static */
 {
 	defaults : {
-    params: new Mxui.Data({}),
+    params: new Mxui.Data,
     model: Grapplenode.Models.Technique
   }
 },
@@ -25,25 +25,17 @@ $.Controller('Grapplenode.Tech',
 	},
 
   show: function(tech){
-    this.element.find('.videocontainer').suna_videoplayer("playasset", tech[0]).end()
-      .find('.sequences').html("//grapplenode/tech/views/list.ejs",{tech: tech[0]});
+    this.element.find('.videocontainer').suna_videoplayer("playasset", tech).end()
+      .find('.sequences').html("//grapplenode/tech/views/list.ejs",{tech: tech});
   },
 
   "{$.route} t set": function (clientState, ev, val) {
-    this.options.params.attr('id', val);
-  },
-
-  "{params} updated.attr": function (params, ev, attr, val) {
-    if (attr !== 'count' && attr !== 'updating') {
-      //want to throttle for rapid updates
-      params.attr('updating', true);
-      clearTimeout(this.newRequestTimer);
-      this.newRequestTimer = setTimeout(this.callback('newRequest'), 100);
-    }
+    this.options.params.attr('_id', val);
+    this.newRequest();
   },
 
   newRequest: function () {
-    this.options.model.findOne(this.options.params.attrs(), this.callback('show'));
+    Grapplenode.Models.Technique.findOne(this.options.params.attrs(), this.callback('show'));
   },
 
   addSequence:function(tech)

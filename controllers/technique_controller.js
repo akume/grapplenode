@@ -7,13 +7,16 @@ var Technique = mongoose.model("Technique");
 module.exports = {
   
   // GET /techniques/:id
-  get_technique : function(req, res){
+  get_techniques : function(req, res){
 
     var query = Technique.find({});
 
     //TODO: add keyword metadata search
     if (req.param('search'))
-      query.where('name' , RegExp(req.param('search').replace('.', ' '), 'i'))
+      query.where('name' , RegExp(req.param('search').replace('.', ' '), 'i'));
+
+    if (req.param('search'))
+      query.where('name' , RegExp(req.param('search').replace('.', ' '), 'i'));
 
     if (req.param('classification'))
       query.where('classification' , req.param('classification'));
@@ -39,16 +42,18 @@ module.exports = {
           } else {
             res.send("no techniques found", 404);
           }
-      })
+      });
+  },
 
-    /*
-    Technique.find({},{},{}, function(err, techniques){
-        if (techniques){
-          res.send(JSON.stringify(techniques), 200);
-        } else {
-          res.send("no techniques found", 404);
-        }
-    });*/
+  get_technique : function(req, res){
+    console.log(req.param('_id'));
+    Technique.findById(req.param('_id'), function (err, technique){
+      if (technique){
+        res.send(JSON.stringify(technique), 200);
+      } else {
+        res.send("no techniques found", 404);
+      }
+    });
   }
   
-}
+};
