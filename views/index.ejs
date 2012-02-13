@@ -1,0 +1,9 @@
+<nav></nav>
+<section><div id="home"></div></section>
+<script type="text/javascript">
+  var USER = {username: '', email: ''};
+  <% if (everyauth.user){%>
+    USER = {username: '<%=everyauth.user.username%>', email: '<%=everyauth.user.email%>'}
+  <%}%>
+</script>
+<script type="text/javascript" src="/jsmvc/steal/steal.js?grapplenode"></script>

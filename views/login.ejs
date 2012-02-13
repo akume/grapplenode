@@ -1,0 +1,21 @@
+<%if ('undefined' !== typeof errors && errors.length) {%>
+  <ul id="#errors">
+    <% errors.forEach(function(error){ %>
+      <li><%= error %></li>
+    <% }) %>
+  </ul>
+<%}%>
+
+<form action="/login" method="post">
+  <div id="login">
+    <label for="<%=everyauth.password.loginFormFieldName%>">Login</label>
+    <input type="text" id="<%=everyauth.password.loginFormFieldName%>" name="<%=everyauth.password.loginFormFieldName%>" value="email"/>
+  </div>
+  <div id="password">
+    <label for="<%=everyauth.password.passwordFormFieldName%>">Password</label>
+    <input type="password" id="<%=everyauth.password.passwordFormFieldName%>" name="<%=everyauth.password.passwordFormFieldName%>"/>
+  </div>
+  <div id="submit">
+    <input type="submit"  value="Login"/>
+  </div>
+</form>
