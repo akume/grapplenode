@@ -16,6 +16,7 @@ $.Controller('Grapplenode.Navigation',
 	init : function()
   {
 		this.element.html("//grapplenode/navigation/views/init.ejs",{username: this.options.username});
+    $('body').click(this.callback('hideauth'));
 	},
 
   "{$.route} nav set": function (clientState, ev, val) {
@@ -49,7 +50,15 @@ $.Controller('Grapplenode.Navigation',
 
   "#auth-links click": function(elem, ev)
   {
-    this.element.find('#auth-types').fadeIn('fast');
+    $(elem).addClass('active')
+      .find('#auth-types').show();
+    return false;
+  },
+
+  hideauth: function()
+  {
+    this.element.find('#auth-links').removeClass('active')
+      .find('#auth-types').hide();
   },
 
 

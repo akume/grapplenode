@@ -18,7 +18,7 @@ steal("jquery/dom/fixture", function(){
                       ];
     var locations = ['top', 'bottom', 'neutral'];
     var actions = ['offense', 'defense', 'counter'];
-    var vim = ['9768954', '']
+    var vim = ['9768954', ''];
 
     return {
       _id: i,
@@ -52,7 +52,7 @@ steal("jquery/dom/fixture", function(){
       commentnum: 22,
       comments : {}
 		}
-	})
+	});
 
 	$.fixture.make("user", 5, function(i, user){
 		var descriptions = ["grill fish", "make ice", "cut onions"]
@@ -63,5 +63,14 @@ steal("jquery/dom/fixture", function(){
       likes: {},
       dislikes: {}
 		}
-	})
-})
+	});
+
+	$.fixture.make("sequence", 5, function(i, sequence){
+		var descriptions = ["grill fish", "make ice", "cut onions"]
+		return {
+			name: "sequence "+i,
+			description: $.fixture.rand( descriptions , 1)[0]
+		}
+	});
+
+});

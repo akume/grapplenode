@@ -8,7 +8,11 @@ var express 	= require('express'),
 	app_version = "1.0.0",
 	app_port,
   db,
+  isProduction= false,
 	app = module.exports = express.createServer();
+
+
+
 
 
 /*
@@ -17,6 +21,11 @@ var express 	= require('express'),
  */
 mongoose.model("User", require("./models/user").User);
 mongoose.model("Technique", require("./models/technique").Technique);
+mongoose.model("Sequence", require("./models/sequence").Sequence);
+
+
+
+
 
 //Authentication
 var util = require('util'),
@@ -24,41 +33,33 @@ var util = require('util'),
   Promise = everyauth.Promise,
   users 	= require('./lib/users'),
   oauthSecrets = JSON.parse(fs.readFileSync('secrets.json', 'utf-8')),
-  User = mongoose.model("User");
+  User = mongoose.model("User"),
 
-  var usersById = {};
-  var nextUserId = 0;
+  usersById = {},
+  nextUserId = 0;
 
-  function addUser (source, sourceUser) {
-    var user;
-    if (arguments.length === 1) { // password-based
-      user = sourceUser = source;
-      user.id = ++nextUserId;
-      return usersById[nextUserId] = user;
-    } else { // non-password-based
-      user = usersById[++nextUserId] = {id: nextUserId};
-      user[source] = sourceUser;
-    }
-    return user;
+function addUser (source, sourceUser) {
+  var user;
+  if (arguments.length === 1) { // password-based
+    user = sourceUser = source;
+    user.id = ++nextUserId;
+    return usersById[nextUserId] = user;
+  } else { // non-password-based
+    user = usersById[++nextUserId] = {id: nextUserId};
+    user[source] = sourceUser;
   }
+  return user;
+}
 
-  usersByLogin = {
-    'n3vergiveb4ck': addUser({ login: 'n3vergiveb4ck', password: 'ch4ngem3'})
-  };
+usersByLogin = {
+  'n3vergiveb4ck': addUser({ login: 'n3vergiveb4ck', password: 'ch4ngem3'})
+};
 
 everyauth.password
   .loginWith('email')
   .getLoginPath('/login')
   .postLoginPath('/login')
   .loginView('login.ejs')
-//    .loginLocals({
-//      title: 'Login'
-//    })
-//    .loginLocals(function (req, res) {
-//      return {
-//        title: 'Login'
-//      }
-//    })
   .loginLocals( function (req, res, done) {
     setTimeout( function () {
       done(null, {
@@ -79,14 +80,6 @@ everyauth.password
   .getRegisterPath('/register')
   .postRegisterPath('/register')
   .registerView('register.ejs')
-//    .registerLocals({
-//      title: 'Register'
-//    })
-//    .registerLocals(function (req, res) {
-//      return {
-//        title: 'Sync Register'
-//      }
-//    })
   .registerLocals( function (req, res, done) {
     setTimeout( function () {
       done(null, {
@@ -132,22 +125,6 @@ everyauth.google
   })
   .redirectPath('/');
 
-// Routes
-everyauth.helpExpress(app);
-var index_controller= require("./controllers/index_controller");
-var technique_controller= require("./controllers/technique_controller");
-var error_controller= require("./controllers/error_controller");
-var admin_controller= require("./controllers/admin_controller");
-
-function authUser(req, res, next) {
-  // You would fetch your user from the db
-  if (req.loggedIn) {
-    next();
-  } else {
-    res.redirect('/login')
-  }
-}
-
 
 
 // Configuration
@@ -161,13 +138,13 @@ app.configure(function(){
   app.use(express.session({ secret: 'cum to me' }));
   app.use(everyauth.middleware());
 
+  everyauth.helpExpress(app);
+
   app.use(app.router);
   app.use(express.compiler({ src: pub, enable: ['sass'] }));
 
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-
-  console.log("grapplenode version " + app_version + " now running on port " + app_port);
 });
 
 app.configure('development', function(){
@@ -186,7 +163,34 @@ app.configure('production', function(){
   var oneYear = 31557600000;
   app.use(express.static(pub, {maxAge:oneYear}));
   app.use(express.errorHandler());
+  isProduction = true;
 });
+
+
+
+
+// Routes
+var index_controller= require("./controllers/index_controller");
+var technique_controller= require("./controllers/technique_controller");
+var sequence_controller= require("./controllers/sequence_controller");
+var error_controller= require("./controllers/error_controller");
+var admin_controller= require("./controllers/admin_controller");
+
+function authUser(req, res, next) {
+  // You would fetch your user from the db
+  if (!isProduction )
+  {
+    next();
+  }
+  else
+  {
+    if (req.loggedIn) {
+      next();
+    } else {
+      res.redirect('/login')
+    }
+  }
+}
 
 app.dynamicHelpers({
   session: function(req, res)
@@ -199,16 +203,23 @@ app.dynamicHelpers({
   }
 });
 
-
 app.get('/', authUser, index_controller.get_index);
 app.post('/', authUser, index_controller.get_index);
+
 app.get('/techniques/:_id', authUser,  technique_controller.get_technique);
 app.get('/techniques', authUser,  technique_controller.get_techniques);
+
+app.get('/sequence/:_id', authUser,  sequence_controller.get_sequence);
+app.get('/sequences', authUser,  sequence_controller.get_sequences);
+
 app.get('/admin/', authUser,  admin_controller.get_admin);
-/*
+
 app.get('/error/:message', error_controller.get_error);
-app.get('/admin/', authUser, adminUser, admin_controller.get_admin);
-*/
+/*app.get('/admin/', authUser, adminUser, admin_controller.get_admin);
+ */
+
+
+
 
 
 

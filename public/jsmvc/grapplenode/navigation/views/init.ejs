@@ -4,11 +4,16 @@
     <li><a href='/logout'>logout</a></li>
   <%} else {%>
     <li id='auth-links'>
-      <a>Login &gt; </a>
+      <a>Login</a>
       <ul id="auth-types">
-        <li>Login ></li>
-        <li><a id="facebook_login" href='/auth/facebook' ><div><span>Facebook</span></div></a></li>
-        <li><a id="google_login" href='/auth/google' ><div><span>Google</span></div></a></li>
+        <li><label for="authemail">Email:</label></li>
+        <li><input id="authemail" type="text"/></li>
+        <li><label for="authpassword">Password:</label></li>
+        <li><input id="authpassword" type="text"/></li>
+        <li>
+          <a id="facebook_login" href='/auth/facebook' ><div><span>Facebook</span></div></a>
+          <a id="google_login" href='/auth/google' ><div><span>Google</span></div></a>
+        </li>
       </ul>
     </li>
     <li><a>Become a member</a></li>

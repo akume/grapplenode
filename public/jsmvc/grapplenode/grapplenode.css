@@ -98,38 +98,31 @@ nav >ul >li.logo a {
 nav >ul >li.active a {
   color: #ff0000;}
 nav >ul#auth {
-  float: right;
-  font: .6em sans-serif;}
+  float: right;}
 nav >ul#auth li#auth-links {
-  width: 85px;}
-nav >ul#auth a span#facebook_icon {
-  background-image: url('/images/login_icon.png');
-  background-position: -29px 62px;
-  height: 14px;
-  width: 14px;
-  display: inline-block;
-  vertical-align: middle;}
-nav >ul#auth a span#google_icon {
-  background-image: url('/images/login_icon.png');
-  background-position: -77px 62px;
-  height: 14px;
-  width: 14px;
-  display: inline-block;
-  vertical-align: middle;}
-nav >ul#auth a:hover span#facebook_icon {
-  background-position: -29px 40px;}
-nav >ul#auth a:hover span#google_icon {
-  background-position: -77px 40px;}
+  width: 85px;
+  position: relative;}
+nav >ul#auth li#auth-links.active {
+  background-color: #fff;
+  border-radius: 3px 3px 0px 0px;}
+nav >ul#auth li#auth-links.active a {
+  color: #000;}
+nav >ul#auth li#auth-links >a {
+  display: block;
+  text-align: center;}
+nav >ul#auth a div {
+  display: inline-block;}
 nav >ul#auth ul#auth-types {
-  font-size: .6em;
+  font-size: .8em;
   display: none;
   background-color: #fff;
   color: #272727;
   width: 265px;
-  height: 30px;
-  padding: 5px 0;}
+  padding: 5px;
+  right: 0px;
+  position: absolute;
+  border-radius: 3px 0px 3px 3px;}
 nav >ul#auth ul#auth-types li {
-  float: left;
   margin: 0;
   background-color: #fff;
   color: #272727;}

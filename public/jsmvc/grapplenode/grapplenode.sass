@@ -110,39 +110,31 @@ nav
           :color #ff0000
     &#auth
       :float right
-      :font .6em sans-serif
       li#auth-links
         :width 85px
+        :position relative
+        &.active
+          :background-color #fff
+          :border-radius 3px 3px 0px 0px
+          a
+            :color #000
+        >a
+          :display block
+          :text-align center
       a
-        span#facebook_icon
-          :background-image url('/images/login_icon.png')
-          :background-position -29px 62px
-          :height 14px
-          :width 14px
+        div
           :display inline-block
-          :vertical-align middle
-        span#google_icon
-          :background-image url('/images/login_icon.png')
-          :background-position -77px 62px
-          :height 14px
-          :width 14px
-          :display inline-block
-          :vertical-align middle
-        &:hover
-          span#facebook_icon
-            :background-position -29px 40px
-          span#google_icon
-            :background-position -77px 40px
       ul#auth-types
-        :font-size .6em
+        :font-size .8em
         :display none
         :background-color #fff
         :color #272727
         :width 265px
-        :height 30px
-        :padding 5px 0
+        :padding 5px
+        :right 0px
+        :position absolute
+        :border-radius 3px 0px 3px 3px
         li
-          :float left
           :margin 0
           :background-color #fff
           :color #272727

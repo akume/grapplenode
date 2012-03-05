@@ -15,8 +15,11 @@ module.exports = {
     if (req.param('search'))
       query.where('name' , RegExp(req.param('search').replace('.', ' '), 'i'));
 
-    if (req.param('search'))
-      query.where('name' , RegExp(req.param('search').replace('.', ' '), 'i'));
+    if (req.param('featured') && req.param('featured') == 'true')
+      query.where('featured' , true);
+
+    if (req.param('popular'))
+      query.sort('votes', -1);
 
     if (req.param('classification'))
       query.where('classification' , req.param('classification'));
